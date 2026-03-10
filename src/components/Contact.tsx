@@ -15,7 +15,7 @@ export function Contact() {
         <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">
           Let's build something.
         </h2>
-        <p className="mx-auto mt-4 max-w-lg text-[var(--text-secondary)] text-[15px] leading-relaxed">
+        <p className="mx-auto mt-4 max-w-lg text-(--text-secondary) text-[15px] leading-relaxed">
           Currently open for new opportunities. Whether you have a question or
           just want to say hi — I'll get back to you.
         </p>
