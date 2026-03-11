@@ -1,27 +1,62 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 const stack = [
   {
-    category: 'Languages',
-    items: ['JavaScript', 'TypeScript', 'Python', 'C / C++', 'SQL'],
+    category: "Languages",
+    items: ["JavaScript", "TypeScript", "Python", "C / C++", "SQL"],
   },
   {
-    category: 'Frontend',
-    items: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'React Native'],
+    category: "Frontend",
+    items: [
+      "React",
+      "SvelteKit",
+      "Next.js",
+      "Tailwind CSS",
+      "Framer Motion",
+      "GSAP",
+      "React Native",
+    ],
   },
   {
-    category: 'Backend',
-    items: ['Node.js', 'Express', 'REST APIs', 'WebSockets', 'Auth Systems'],
+    category: "Backend",
+    items: [
+      "Node.js",
+      "Express",
+      "Supabase",
+      "REST APIs",
+      "WebSockets",
+      "Auth Systems",
+      "Nestjs",
+      "Django",
+      "FastAPI",
+      "GraphQL",
+      "RabbitMQ",
+      "Redis",
+    ],
   },
   {
-    category: 'Databases',
-    items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Firebase'],
+    category: "Databases",
+    items: ["PostgreSQL", "MongoDB", "MySQL", "Firebase"],
   },
   {
-    category: 'Tools',
-    items: ['Git', 'Docker', 'Linux', 'Supabase', 'Firebase'],
+    category: "DevOps",
+    items: [
+      "GitHub Actions",
+      "Docker",
+      "Kubernetes",
+      "Docker Compose",
+      "Nginx",
+    ],
   },
-]
+  {
+    category: "Analytics & Monitoring",
+    items: ["Sentry", "Datadog", "PostHog", "Google Analytics"],
+  },
+  {
+    category: "Tools",
+    items: ["Git", "Linux", "Supabase", "Firebase"],
+  },
+];
 
 export function TechStack() {
   return (
@@ -29,13 +64,13 @@ export function TechStack() {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-(--text-tertiary)">
           Stack
         </p>
-        <h2 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)] sm:text-3xl">
+        <h2 className="text-2xl font-semibold tracking-tight text-(--text-primary) sm:text-3xl">
           Technologies I work with.
         </h2>
       </motion.div>
@@ -46,17 +81,17 @@ export function TechStack() {
             key={group.category}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: gi * 0.08 }}
           >
-            <h3 className="mb-4 text-sm font-medium text-[var(--text-tertiary)]">
+            <h3 className="mb-4 text-sm font-medium text-(--text-tertiary)">
               {group.category}
             </h3>
             <div className="flex flex-wrap gap-2">
               {group.items.map((item) => (
                 <span
                   key={item}
-                  className="rounded-md border border-[var(--badge-border)] bg-[var(--badge-bg)] px-3 py-1.5 text-[13px] font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)] hover:border-[var(--border-hover)]"
+                  className="rounded-md border border-(--badge-border) bg-(--badge-bg) px-3 py-1.5 text-[13px] font-medium text-(--text-secondary) transition-colors hover:text-(--text-primary) hover:border-(--border-hover)"
                 >
                   {item}
                 </span>
@@ -67,7 +102,7 @@ export function TechStack() {
       </div>
 
       {/* Divider */}
-      <div className="mt-16 h-px bg-[var(--border)]" />
+      <div className="mt-16 h-px bg-(--border)" />
     </section>
-  )
+  );
 }

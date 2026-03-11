@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { MagneticButton } from './MagneticButton'
-import { Send, Github, Linkedin, Instagram } from 'lucide-react'
+import { Send, Github, Linkedin, Instagram, Twitter } from 'lucide-react'
 
 export function Contact() {
   return (
@@ -12,7 +12,7 @@ export function Contact() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="text-center"
       >
-        <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">
+        <h2 className="text-3xl font-bold tracking-tight text-(--text-primary) sm:text-4xl">
           Let's build something.
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-(--text-secondary) text-[15px] leading-relaxed">
@@ -36,16 +36,21 @@ export function Contact() {
             LinkedIn
           </MagneticButton>
 
-          <MagneticButton href="https://instagram.com/salillakra">
+          <MagneticButton href="https://instagram.com/officialsalillakra">
             <Instagram className="h-4 w-4" />
             Instagram
+          </MagneticButton>
+
+          <MagneticButton href="https://x.com/salabornes">
+            <Twitter className="h-4 w-4" />
+            Twitter
           </MagneticButton>
         </div>
       </motion.div>
 
       {/* Footer */}
       <div className="mt-32 text-center">
-        <p className="text-xs text-[var(--text-tertiary)]">
+        <p className="text-xs text-(--text-tertiary)">
           © {new Date().getFullYear()} Salil Lakra. Built with TanStack Start.
         </p>
       </div>

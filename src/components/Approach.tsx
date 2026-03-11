@@ -48,7 +48,7 @@ const item = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
   },
 }
 
@@ -59,12 +59,12 @@ export function Services() {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
       >
-        <h2 className="text-2xl font-bold tracking-tight text-[var(--text-primary)] mb-2">
+        <h2 className="text-2xl font-bold tracking-tight text-(--text-primary) mb-2">
           What I Can Help With
         </h2>
-        <p className="text-[var(--text-tertiary)] text-sm mb-10 max-w-lg">
+        <p className="text-(--text-tertiary) text-sm mb-10 max-w-lg">
           From idea to production — I build the whole thing, not just components.
         </p>
       </motion.div>
@@ -89,15 +89,15 @@ export function Services() {
                 border: '1px solid var(--border)',
               }}
             >
-              <s.icon className="h-4 w-4 text-[var(--accent)]" />
+              <s.icon className="h-4 w-4 text-(--accent)" />
             </div>
 
-            <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2 flex items-center gap-1.5">
+            <h3 className="text-sm font-semibold text-(--text-primary) mb-2 flex items-center gap-1.5">
               {s.title}
-              <ArrowRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-60 group-hover:translate-x-0 transition-all duration-200 text-[var(--text-tertiary)]" />
+              <ArrowRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-60 group-hover:translate-x-0 transition-all duration-200 text-(--text-tertiary)" />
             </h3>
 
-            <p className="text-xs leading-relaxed text-[var(--text-tertiary)] mb-4">
+            <p className="text-xs leading-relaxed text-(--text-tertiary) mb-4">
               {s.description}
             </p>
 
@@ -121,7 +121,7 @@ export function Services() {
       </motion.div>
 
       {/* Divider */}
-      <div className="mt-16 h-px bg-[var(--border)]" />
+      <div className="mt-16 h-px bg-(--border)" />
     </section>
   )
 }

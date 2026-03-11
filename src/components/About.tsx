@@ -9,18 +9,18 @@ export function About() {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-[var(--text-tertiary)]">
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-(--text-tertiary)">
           About
         </p>
-        <h2 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)] sm:text-3xl">
+        <h2 className="text-2xl font-semibold tracking-tight text-(--text-primary) sm:text-3xl">
           A full stack developer who ships real systems.
         </h2>
 
-        <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-[var(--text-secondary)]">
+        <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-(--text-secondary)">
           <p>
             I'm Salil Lakra from India, currently studying Electronics and
             Communication Engineering at{" "}
-            <strong className="font-medium text-[var(--text-primary)]">
+            <strong className="font-medium text-(--text-primary)">
               BIT Mesra
             </strong>
             .
@@ -31,7 +31,7 @@ export function About() {
           </p>
           <p>
             My core focus areas are{" "}
-            <strong className="font-medium text-[var(--text-primary)]">
+            <strong className="font-medium text-(--text-primary)">
               backend architecture, performance optimization, scalable APIs, and
               real-time systems
             </strong>
@@ -40,7 +40,7 @@ export function About() {
         </div>
 
         {/* Divider */}
-        <div className="mt-12 h-px bg-[var(--border)]" />
+        <div className="mt-12 h-px bg-(--border)" />
       </motion.div>
     </section>
   );

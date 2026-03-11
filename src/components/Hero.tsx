@@ -27,7 +27,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-8"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-1.5 text-xs font-medium text-[var(--text-tertiary)] backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 rounded-full border border-(--border) bg-(--surface) px-4 py-1.5 text-xs font-medium text-(--text-tertiary) backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Available for opportunities
           </span>
@@ -37,7 +37,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="text-5xl font-bold tracking-[-0.02em] text-[var(--text-primary)] sm:text-7xl lg:text-8xl"
+          className="text-5xl font-bold tracking-[-0.02em] text-(--text-primary) sm:text-7xl lg:text-8xl"
         >
           Salil Lakra
         </motion.h1>
@@ -46,7 +46,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg"
+          className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-(--text-secondary) sm:text-lg"
         >
           Full Stack Developer building high-performance web and mobile
           applications with Next.js, React Native, and Node.js.
@@ -81,7 +81,7 @@ export function Hero() {
       </div>
 
       {/* Bottom fade */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[var(--bg)] to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-(--bg) to-transparent" />
     </section>
   );
 }
