@@ -9,7 +9,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Salil Lakra — Full Stack Developer' },
+      { title: 'Salil Lakra | Full Stack Developer' },
       { name: 'description', content: 'Full Stack Developer building scalable web and mobile applications with Next.js, React Native, and Node.js.' },
     ],
     links: [

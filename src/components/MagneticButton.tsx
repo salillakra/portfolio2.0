@@ -27,8 +27,8 @@ export function MagneticButton({
 
   const base =
     variant === 'primary'
-      ? 'bg-[var(--accent)] text-[var(--accent-text)] hover:opacity-90'
-      : 'bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border)] hover:border-[var(--border-hover)] hover:bg-[var(--surface-hover)]'
+      ? 'bg-(--accent) text-(--accent-text) hover:opacity-90'
+      : 'bg-(--surface) text-(--text-primary) border border-(--border) hover:border-(--border-hover) hover:bg-(--surface-hover)'
 
   const Tag = href ? 'a' : 'button'
 

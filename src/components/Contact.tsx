@@ -4,7 +4,7 @@ import { Send, Github, Linkedin, Instagram, Twitter } from 'lucide-react'
 
 export function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-3xl px-6 py-32">
+    <section id="contact" className="mx-auto max-w-3xl px-6 py-20 sm:py-32">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export function Contact() {
           just want to say hi — I'll get back to you.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <MagneticButton href="mailto:salillakra.dev@gmail.com" variant="primary">
             <Send className="h-4 w-4" />
             Send Message
@@ -41,7 +41,7 @@ export function Contact() {
             Instagram
           </MagneticButton>
 
-          <MagneticButton href="https://x.com/salabornes">
+          <MagneticButton href="https://x.com/salillakra223">
             <Twitter className="h-4 w-4" />
             Twitter
           </MagneticButton>
@@ -49,7 +49,7 @@ export function Contact() {
       </motion.div>
 
       {/* Footer */}
-      <div className="mt-32 text-center">
+      <div className="mt-20 sm:mt-32 text-center">
         <p className="text-xs text-(--text-tertiary)">
           © {new Date().getFullYear()} Salil Lakra. Built with TanStack Start.
         </p>

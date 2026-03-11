@@ -4,7 +4,7 @@ import { MagneticButton } from "./MagneticButton";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-16 text-center overflow-hidden">
+    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-20 sm:pt-16 text-center overflow-hidden">
       {/* Ambient gradient */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -25,7 +25,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8"
+          className="mb-6 sm:mb-8"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-(--border) bg-(--surface) px-4 py-1.5 text-xs font-medium text-(--text-tertiary) backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -37,7 +37,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="text-5xl font-bold tracking-[-0.02em] text-(--text-primary) sm:text-7xl lg:text-8xl"
+          className="text-4xl font-bold tracking-[-0.02em] text-(--text-primary) sm:text-7xl lg:text-8xl"
         >
           Salil Lakra
         </motion.h1>
@@ -46,7 +46,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-(--text-secondary) sm:text-lg"
+          className="mx-auto mt-4 sm:mt-6 max-w-xl text-sm leading-relaxed text-(--text-secondary) sm:text-lg"
         >
           Full Stack Developer building high-performance web and mobile
           applications with Next.js, React Native, and Node.js.
@@ -56,7 +56,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3"
         >
           <MagneticButton href="#projects" variant="primary">
             View Projects

@@ -62,7 +62,7 @@ export function Projects() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="mt-10 grid grid-cols-3 gap-4"
+        className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4"
       >
         {[
           { value: '11,000+', label: 'Users served' },
@@ -71,7 +71,7 @@ export function Projects() {
         ].map((stat) => (
           <div
             key={stat.label}
-            className="rounded-xl border border-(--border) bg-(--surface) p-5 text-center"
+            className="rounded-xl border border-(--border) bg-(--surface) p-4 sm:p-5 text-center"
           >
             <div className="text-xl font-bold text-(--metric-accent) sm:text-2xl">
               {stat.value}
@@ -92,12 +92,12 @@ export function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, delay: index * 0.08 }}
-            className="card group rounded-xl p-6"
+            className="card group rounded-xl p-5 sm:p-6"
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-3">
-                  <h3 className="text-lg font-semibold text-(--text-primary)">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+                  <h3 className="text-base sm:text-lg font-semibold text-(--text-primary)">
                     {project.title}
                   </h3>
                   <span className="inline-flex items-center gap-1 rounded-full bg-(--metric-bg) px-2.5 py-0.5 text-xs font-medium text-(--metric-accent)">
@@ -120,7 +120,7 @@ export function Projects() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 pt-1 shrink-0">
+              <div className="flex items-center gap-3 pt-1 sm:pt-0 sm:shrink-0">
                 <a
                   href={project.github}
                   target="_blank"
