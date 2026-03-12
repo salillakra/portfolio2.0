@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import { MagneticButton } from './MagneticButton'
-import { Send, Github, Linkedin, Instagram, Twitter } from 'lucide-react'
+import { motion } from "framer-motion";
+import { MagneticButton } from "./MagneticButton";
+import { Send, Github, Linkedin, Instagram, Twitter } from "lucide-react";
 
 export function Contact() {
   return (
@@ -8,7 +8,7 @@ export function Contact() {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="text-center"
       >
@@ -21,7 +21,10 @@ export function Contact() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <MagneticButton href="mailto:salillakra.dev@gmail.com" variant="primary">
+          <MagneticButton
+            href="mailto:salillakra.dev@gmail.com"
+            variant="primary"
+          >
             <Send className="h-4 w-4" />
             Send Message
           </MagneticButton>
@@ -51,9 +54,9 @@ export function Contact() {
       {/* Footer */}
       <div className="mt-20 sm:mt-32 text-center">
         <p className="text-xs text-(--text-tertiary)">
-          © {new Date().getFullYear()} Salil Lakra. Built with TanStack Start.
+          © {new Date().getFullYear()} Salil Lakra. All rights reserved.
         </p>
       </div>
     </section>
-  )
+  );
 }
