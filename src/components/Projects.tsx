@@ -1,43 +1,43 @@
-import { motion } from 'framer-motion'
-import { ExternalLink, Github, Users } from 'lucide-react'
+import { motion } from "framer-motion";
+import { ArrowSquareOut, GithubLogo, Users } from "@phosphor-icons/react";
 
 const projects = [
   {
-    title: 'Pantheon Techfest',
+    title: "Pantheon Techfest",
     description:
       "Official website for BIT Mesra's Pantheon Techfest — real-time leaderboards, secure user validation, built to handle peak traffic.",
-    tech: ['Next.js', 'TypeScript', 'Tailwind', 'PostgreSQL'],
-    metric: '8,000+ users',
-    github: 'https://github.com/salillakra/Pantheon-2k25',
-    live: 'https://pantheon25.com',
+    tech: ["Next.js", "TypeScript", "Tailwind", "PostgreSQL"],
+    metric: "8,000+ users",
+    github: "https://github.com/salillakra/Pantheon-2k25",
+    live: "https://pantheon25.com",
   },
   {
-    title: 'E-Summit 2026',
+    title: "E-Summit 2026",
     description:
-      'Platform with dynamic event pages, OAuth authentication, and real-time features during a high traffic live event.',
-    tech: ['Next.js', 'Supabase', 'TypeScript', 'Websocket', 'PostgreSQL'],
-    metric: '11K+ page views',
-    github: 'https://github.com/EDC-BITM/e-summit26',
-    live: 'https://esummit.edcbitmesra.in',
+      "Platform with dynamic event pages, OAuth authentication, and real-time features during a high traffic live event.",
+    tech: ["Next.js", "Supabase", "TypeScript", "Websocket", "PostgreSQL"],
+    metric: "11K+ page views",
+    github: "https://github.com/EDC-BITM/e-summit26",
+    live: "https://esummit.edcbitmesra.in",
   },
   {
-    title: 'RoboSaga',
+    title: "RoboSaga",
     description:
-      'Competition platform with structured event data and scalable APIs built for robotics competitions.',
-    tech: ['Next.js', 'PostgreSQL', 'Drizzle ORM'],
-    metric: 'Scalable APIs',
-    github: 'https://github.com/Pratyunmis/robosaga26',
-    live: 'https://robosaga.robolutionbitm.in',
+      "Competition platform with structured event data and scalable APIs built for robotics competitions.",
+    tech: ["Next.js", "PostgreSQL", "Drizzle ORM"],
+    metric: "Scalable APIs",
+    github: "https://github.com/Pratyunmis/robosaga26",
+    live: "https://robosaga.robolutionbitm.in",
   },
   {
-    title: 'MetaMind',
+    title: "MetaMind",
     description:
-      'Full stack blogging platform with authentication, role-based access, image uploads, and REST API architecture.',
-    tech: ['Next.js', 'MongoDB'],
-    metric: 'Full RBAC',
-    github: 'https://github.com/salillakra/metamind',
+      "Full stack blogging platform with authentication, role-based access, image uploads, and REST API architecture.",
+    tech: ["Next.js", "MongoDB"],
+    metric: "Full RBAC",
+    github: "https://github.com/salillakra/metamind",
   },
-]
+];
 
 export function Projects() {
   return (
@@ -45,7 +45,7 @@ export function Projects() {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-(--text-tertiary)">
@@ -60,14 +60,14 @@ export function Projects() {
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5, delay: 0.1 }}
         className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4"
       >
         {[
-          { value: '11,000+', label: 'Users served' },
-          { value: '8,000+', label: 'Live participants' },
-          { value: 'Multiple', label: 'High traffic deploys' },
+          { value: "11,000+", label: "Users served" },
+          { value: "8,000+", label: "Live participants" },
+          { value: "Multiple", label: "High traffic deploys" },
         ].map((stat) => (
           <div
             key={stat.label}
@@ -90,7 +90,7 @@ export function Projects() {
             key={project.title}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, delay: index * 0.08 }}
             className="card group rounded-xl p-5 sm:p-6"
           >
@@ -127,16 +127,16 @@ export function Projects() {
                   rel="noopener noreferrer"
                   className="text-(--text-tertiary) hover:text-(--text-primary) transition-colors"
                 >
-                  <Github className="h-4 w-4" />
+                  <GithubLogo className="h-4 w-4" />
                 </a>
-                {'live' in project && project.live && (
+                {"live" in project && project.live && (
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-(--text-tertiary) hover:text-(--text-primary) transition-colors"
                   >
-                    <ExternalLink className="h-4 w-4" />
+                    <ArrowSquareOut className="h-4 w-4" />
                   </a>
                 )}
               </div>
@@ -148,5 +148,5 @@ export function Projects() {
       {/* Divider */}
       <div className="mt-16 h-px bg-(--border)" />
     </section>
-  )
+  );
 }

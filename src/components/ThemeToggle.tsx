@@ -1,32 +1,32 @@
-import { useEffect, useState } from 'react'
-import { Sun, Moon } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from "react";
+import { Sun, Moon } from "@phosphor-icons/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(true)
+  const [dark, setDark] = useState(true);
 
   useEffect(() => {
-    const stored = localStorage.getItem('theme')
-    if (stored === 'light') {
-      setDark(false)
-      document.documentElement.classList.remove('dark')
+    const stored = localStorage.getItem("theme");
+    if (stored === "light") {
+      setDark(false);
+      document.documentElement.classList.remove("dark");
     } else {
-      setDark(true)
-      document.documentElement.classList.add('dark')
+      setDark(true);
+      document.documentElement.classList.add("dark");
     }
-  }, [])
+  }, []);
 
   const toggle = () => {
-    const next = !dark
-    setDark(next)
+    const next = !dark;
+    setDark(next);
     if (next) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
-  }
+  };
 
   return (
     <button
@@ -58,5 +58,5 @@ export function ThemeToggle() {
         )}
       </AnimatePresence>
     </button>
-  )
+  );
 }

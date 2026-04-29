@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -22,13 +22,18 @@
   --accent-soft: rgba(0, 0, 0, 0.06);
   --glow-color: rgba(0, 0, 0, 0.04);
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
-  --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover:
+    0 4px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
   --badge-bg: rgba(0, 0, 0, 0.04);
   --badge-border: rgba(0, 0, 0, 0.06);
   --metric-accent: #059669;
   --metric-bg: rgba(5, 150, 105, 0.06);
   --nav-bg: rgba(250, 250, 250, 0.8);
-  --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.08), transparent);
+  --gradient-hero: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(120, 119, 198, 0.08),
+    transparent
+  );
 }
 
 /* ─── Dark Theme ─── */
@@ -47,14 +52,20 @@
   --accent-text: #0a0a0a;
   --accent-soft: rgba(255, 255, 255, 0.06);
   --glow-color: rgba(255, 255, 255, 0.04);
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03);
-  --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --card-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  --card-shadow-hover:
+    0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
   --badge-bg: rgba(255, 255, 255, 0.06);
   --badge-border: rgba(255, 255, 255, 0.08);
   --metric-accent: #34d399;
   --metric-bg: rgba(52, 211, 153, 0.08);
   --nav-bg: rgba(10, 10, 10, 0.8);
-  --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.12), transparent);
+  --gradient-hero: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(120, 119, 198, 0.12),
+    transparent
+  );
 }
 
 /* ─── Base ─── */
@@ -73,7 +84,9 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 ::selection {
@@ -99,7 +112,11 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--card-shadow);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
 }
 
 .card:hover {
@@ -107,7 +124,135 @@ body {
   border-color: var(--border-hover);
 }
 
+.featured-writing-track {
+  min-width: max-content;
+}
+
+.featured-writing-card {
+  flex: 0 0 min(84vw, 21.5rem);
+  transform-origin: center;
+  scroll-snap-align: center;
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .featured-writing-card {
+    flex-basis: clamp(17rem, 25vw, 22rem);
+  }
+}
+
+@media (min-width: 640px) and (hover: none) {
+  .featured-writing-card {
+    flex-basis: min(72vw, 24rem);
+  }
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* ─── Smooth transitions for theme change ─── */
-.card, .badge, nav, section, a, button, h1, h2, h3, p, span, div {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+.card,
+.badge,
+nav,
+section,
+a,
+button,
+h1,
+h2,
+h3,
+p,
+span,
+div {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Blog article typography */
+.blog-prose {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.blog-prose > :first-child {
+  margin-top: 0;
+}
+
+.blog-prose h2,
+.blog-prose h3 {
+  color: var(--text-primary);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin-top: 2.2rem;
+  margin-bottom: 0.9rem;
+}
+
+.blog-prose h2 {
+  font-size: 1.8rem;
+}
+
+.blog-prose h3 {
+  font-size: 1.35rem;
+}
+
+.blog-prose p {
+  margin: 0.9rem 0;
+}
+
+.blog-prose strong {
+  color: var(--text-primary);
+}
+
+.blog-prose ol,
+.blog-prose ul {
+  margin: 0.8rem 0 1rem;
+  padding-left: 1.4rem;
+}
+
+.blog-prose li {
+  margin: 0.45rem 0;
+}
+
+.blog-prose img {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  margin: 1.6rem 0 0.6rem;
+}
+
+.blog-prose blockquote {
+  margin: 1.2rem 0;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid var(--border-hover);
+  background: var(--surface);
+  border-radius: 0.75rem;
+}
+
+.blog-prose code {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    Liberation Mono,
+    Courier New,
+    monospace;
+  font-size: 0.9em;
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  border-radius: 0.4rem;
+  padding: 0.15rem 0.35rem;
+  color: var(--text-primary);
 }

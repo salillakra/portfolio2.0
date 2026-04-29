@@ -1,0 +1,96 @@
+export const meta = {
+  title: "Prisma vs Drizzle: Choosing a Type-Safe ORM for Production",
+  excerpt:
+    "A practical comparison of Prisma and Drizzle across developer speed, query control, migrations, and long-term maintenance.",
+  publishedAt: "2026-04-30",
+  updatedAt: "2026-04-30",
+  featured: true,
+  author: "Salil Lakra",
+  readingTime: "11 min read",
+  tags: ["ORM", "Databases", "TypeScript", "Full Stack"],
+  coverImage:
+    "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Database dashboard and query editor on screen",
+}
+
+## The Real Choice: Control vs Convenience
+
+Prisma and Drizzle both promise type safety, but they optimize for different
+outcomes. Prisma prioritizes developer velocity and consistency. Drizzle
+prioritizes SQL control and minimal abstraction.
+
+There is no universal winner. The best choice depends on how much control you
+need versus how much convenience you want.
+
+## Prisma Strengths
+
+Prisma is excellent when you want speed and standardization.
+
+- **Great DX** with a clear schema file and generated client.
+- **Strong migrations** workflow with drift detection.
+- **Intuitive query API** for common CRUD and relations.
+- **Consistent across teams** because the mental model is shared.
+
+Prisma is ideal for product teams that value fast delivery and are okay with an
+opinionated query layer.
+
+## Prisma Tradeoffs
+
+- Advanced SQL patterns can feel constrained.
+- The query engine is a runtime layer you depend on.
+- Some edge cases require raw SQL anyway.
+
+If your product depends on specialized SQL or deep database features, Prisma can
+feel like it is in the way.
+
+## Drizzle Strengths
+
+Drizzle is closer to SQL. It gives you type safety without hiding the database.
+
+- **SQL-first API** with predictable output.
+- **Lightweight runtime** and fewer moving parts.
+- **Great for advanced queries** and database-specific features.
+- **Explicit control** over joins, indexes, and performance.
+
+Drizzle works well when you already think in SQL and want full control.
+
+## Drizzle Tradeoffs
+
+- You own more of the conventions.
+- Migration experience can be less turnkey if your team is used to Prisma.
+- Higher chance of inconsistent patterns across teams.
+
+If your team is junior or you need strong guardrails, Drizzle can slow you down.
+
+## Decision Framework
+
+Pick Prisma if:
+
+1. You need to ship quickly with strong guardrails.
+2. You want a standard pattern across multiple teams.
+3. Most queries are standard CRUD and relations.
+
+Pick Drizzle if:
+
+1. SQL performance and custom queries are a priority.
+2. You want minimal runtime layers.
+3. Your team is comfortable owning database patterns.
+
+## Migration And Schema Strategy
+
+Regardless of tool, the schema strategy matters more than the ORM.
+
+- Use explicit migrations with clear ownership.
+- Treat breaking changes as product events.
+- Keep indexes and constraints reviewed like code.
+
+A slow schema process will make any ORM feel painful.
+
+## Closing Recommendation
+
+If you are early stage or optimizing for speed, Prisma is usually the fastest
+path. If you are performance-sensitive or operate at scale with heavy SQL, Drizzle
+is often the better long-term fit.
+
+Choose the tool that matches your current team maturity, not the one that looks
+coolest on paper.

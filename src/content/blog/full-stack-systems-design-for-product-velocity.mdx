@@ -1,0 +1,117 @@
+export const meta = {
+  title: "Full-Stack Systems Design For Product Velocity",
+  excerpt:
+    "A practical architecture playbook for shipping product features faster without turning your stack into an operational liability.",
+  publishedAt: "2026-04-23",
+  updatedAt: "2026-04-23",
+  featured: true,
+  author: "Salil Lakra",
+  readingTime: "14 min read",
+  tags: ["Full Stack", "System Design", "Architecture"],
+  coverImage:
+    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Architecture blueprint with service boundaries on notes",
+}
+
+## Why Product Teams Slow Down As Codebases Grow
+
+In early stages, speed comes from proximity. The same two or three engineers own product decisions, implementation, and production issues. You can move quickly because feedback loops are short.
+
+As the product grows, velocity usually drops for predictable reasons:
+
+1. Cross-cutting changes require too many teams.
+2. APIs evolve without strong contracts.
+3. Data shape decisions are made ad hoc and become hard to reverse.
+4. Ownership boundaries are unclear during incidents.
+
+None of this is unusual. It is simply the point where your architecture has to start carrying execution weight.
+
+![Architecture blueprint with microservices and domain boundaries on sticky notes](https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80)
+
+*Good architecture is less about elegance and more about preserving decision speed under complexity.*
+
+## The Principle: Optimize For Independent Delivery
+
+A full-stack system that supports product velocity is designed so teams can ship independently most of the time.
+
+In practical terms:
+
+1. Frontend routes map cleanly to backend capabilities.
+2. Backend services expose stable contracts with explicit versioning strategy.
+3. Data models are owned by domains, not by whichever service touched them first.
+4. Infrastructure defaults are standardized, so every new feature does not require bespoke platform work.
+
+You are not trying to eliminate dependency. You are trying to **bound and make it predictable**.
+
+## A Durable Request Path
+
+When a user action traverses browser, API, worker, and database layers, the request path must stay intelligible.
+
+A pattern that works well:
+
+1. Keep route-level orchestration in the frontend and avoid leaking business rules into UI components.
+2. Keep domain decisions in backend application services.
+3. Keep persistence concerns in repositories or data mappers.
+4. Emit domain events for async side effects instead of chaining synchronous calls.
+
+This preserves clarity during change. It also makes production debugging substantially easier.
+
+## Contracts Before Integrations
+
+Integration bugs are expensive because they are discovered late. Strong contract discipline moves that discovery left.
+
+Recommended baseline:
+
+1. Schema-first APIs with explicit backward compatibility policy.
+2. Consumer-driven contract tests between key frontend and backend boundaries.
+3. Typed client generation to reduce drift.
+4. Deprecation policy with dates, not vague intent.
+
+This removes a major source of release anxiety and helps teams coordinate without daily synchronization calls.
+
+![Developer reviewing API schema and monitoring dashboards](https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80)
+
+*Contract rigor is a velocity feature, not a governance burden.*
+
+## Data Model Decisions That Compound
+
+Most long-term friction in full-stack systems is data friction. The first schema often reflects short-term convenience, and teams pay the tax later.
+
+Key practices:
+
+1. Design entities around business language, not UI shape.
+2. Use explicit state transitions for critical workflows.
+3. Track lifecycle events for auditability and analytics.
+4. Prefer additive schema evolution whenever possible.
+
+If your data model encodes core business semantics cleanly, product iteration becomes cheaper over time.
+
+## Operational Guardrails For Fast Shipping
+
+Velocity without guardrails is deferred pain. Teams need a shipping system that contains risk by default.
+
+A high-leverage setup includes:
+
+1. Progressive delivery with feature flags and staged rollouts.
+2. SLOs tied to critical user journeys.
+3. Error budgets that influence release pacing.
+4. Incident templates that prioritize communication quality.
+
+This lets you move quickly without pretending production is deterministic.
+
+## What Senior Teams Do Consistently
+
+Across high-performing teams, the same habits appear again and again:
+
+1. Architecture choices are documented with tradeoffs, not only final decisions.
+2. Product and engineering align on measurable outcomes before implementation.
+3. Platform improvements are planned as force multipliers, not cleanup tasks.
+4. Learning loops after incidents are blameless and actionable.
+
+These are cultural choices, but they directly shape code quality and release speed.
+
+## Closing
+
+If your goal is sustained product velocity, treat architecture as an execution system. The right system does not remove complexity. It makes complexity legible, manageable, and recoverable.
+
+That is the difference between teams that sprint and teams that compound.

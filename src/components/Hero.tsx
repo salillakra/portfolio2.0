@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Github, FileText, Instagram } from "lucide-react";
+import {
+  ArrowRight,
+  GithubLogo,
+  FileText,
+  InstagramLogo,
+} from "@phosphor-icons/react";
 import { MagneticButton } from "./MagneticButton";
 
 export function Hero() {
@@ -64,17 +69,17 @@ export function Hero() {
           </MagneticButton>
 
           <MagneticButton href="https://github.com/salillakra">
-            <Github className="h-4 w-4" />
+            <GithubLogo className="h-4 w-4" />
             GitHub
           </MagneticButton>
 
-          <MagneticButton href="/resume.pdf">
+          <MagneticButton href="/resume">
             <FileText className="h-4 w-4" />
             Resume
           </MagneticButton>
 
           <MagneticButton href="https://instagram.com/salillakra">
-            <Instagram className="h-4 w-4" />
+            <InstagramLogo className="h-4 w-4" />
             Instagram
           </MagneticButton>
         </motion.div>

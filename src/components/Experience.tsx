@@ -1,19 +1,19 @@
-import { motion } from 'framer-motion'
-import { Briefcase } from 'lucide-react'
+import { motion } from "framer-motion";
+import { Briefcase } from "@phosphor-icons/react";
 
 const jobs = [
   {
-    title: 'Full Stack Developer',
-    company: 'Betiyan Nidhi Pvt. Ltd.',
-    period: '2024 — Present',
+    title: "Full Stack Developer",
+    company: "Betiyan Nidhi Pvt. Ltd.",
+    period: "2024 — Present",
     highlights: [
-      'Built Android apps using React Native',
-      'Designed scalable Node.js backend architecture',
-      'Optimized database queries and API performance',
-      'Structured databases for financial workflows',
+      "Built Android apps using React Native",
+      "Designed scalable Node.js backend architecture",
+      "Optimized database queries and API performance",
+      "Structured databases for financial workflows",
     ],
   },
-]
+];
 
 export function Experience() {
   return (
@@ -21,7 +21,7 @@ export function Experience() {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-(--text-tertiary)">
@@ -38,7 +38,7 @@ export function Experience() {
             key={job.title}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
             className="card rounded-xl p-6"
           >
@@ -76,5 +76,5 @@ export function Experience() {
       {/* Divider */}
       <div className="mt-16 h-px bg-(--border)" />
     </section>
-  )
+  );
 }

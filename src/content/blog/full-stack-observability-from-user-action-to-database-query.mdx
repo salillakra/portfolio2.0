@@ -1,0 +1,84 @@
+export const meta = {
+  title: "Full-Stack Observability: From User Action To Database Query",
+  excerpt:
+    "A practical observability framework connecting frontend behavior, backend execution, and data-layer performance into one coherent debugging story.",
+  publishedAt: "2026-03-30",
+  author: "Salil Lakra",
+  readingTime: "12 min read",
+  tags: ["Observability", "Full Stack", "Performance"],
+  coverImage:
+    "https://images.unsplash.com/photo-1551281044-8b5bdc1b5f97?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Observability dashboard with traces, logs, and latency charts",
+}
+
+## Why Teams Struggle To Debug Cross-Layer Issues
+
+A user reports that checkout is slow. Frontend metrics show elevated interaction delay. Backend dashboards show stable CPU. Database monitoring shows occasional lock contention. Nobody is wrong, but nobody has the full path.
+
+This is the classic observability gap: each layer has data, but there is no shared execution narrative.
+
+## Use Trace Context As A Product Primitive
+
+Distributed tracing is most valuable when trace context starts in the frontend and survives to the deepest backend dependency.
+
+Implementation baseline:
+
+1. Generate correlation context for user-triggered actions.
+2. Propagate context through API gateway, services, and async workers.
+3. Attach identifiers to logs and metrics.
+4. Retain enough context to reconstruct a full request storyline.
+
+This reduces mean-time-to-diagnose more than almost any other platform investment.
+
+![Developer analyzing distributed trace waterfall and service timings](https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1400&q=80)
+
+*You cannot optimize what you cannot narrate end-to-end.*
+
+## Instrument Journeys, Not Only Endpoints
+
+Endpoint-level metrics are helpful but insufficient for product-level decisions. Teams need journey-level telemetry.
+
+For each critical journey, track:
+
+1. Frontend interaction start and completion.
+2. API fan-out cost and dependency hotspots.
+3. Queue delays and async processing completion.
+4. Final business outcome state.
+
+This ties technical behavior to user impact and helps prioritize realistically.
+
+## Logging Strategy For Signal Over Noise
+
+Logs become expensive and low-value when uncontrolled.
+
+A mature logging strategy includes:
+
+1. Structured logs with stable field naming.
+2. Explicit sampling policy by event criticality.
+3. PII-safe payload handling standards.
+4. Severity rules aligned with incident response expectations.
+
+The goal is actionable context, not raw volume.
+
+## Alerting For Actionability
+
+Alert fatigue is a design problem. Alerts should represent conditions requiring human judgment.
+
+Effective alert design:
+
+1. Alert on user-impacting SLO violations.
+2. Route alerts by ownership boundaries.
+3. Include links to traces, dashboards, and runbooks.
+4. Measure alert quality by false-positive rate and time-to-resolution.
+
+This keeps on-call sustainable and effective.
+
+![On-call engineer triaging alerts with runbook and service map](https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80)
+
+*Observability maturity is visible in how calmly teams handle production variance.*
+
+## Closing
+
+Full-stack observability is ultimately about preserving engineering judgment under pressure. When telemetry is connected across layers, teams can resolve incidents faster, make better roadmap choices, and improve system health with confidence.
+
+That is how observability evolves from tooling spend into strategic advantage.

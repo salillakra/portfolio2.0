@@ -1,0 +1,104 @@
+export const meta = {
+  title: "Backend Patterns That Keep APIs Reliable At Scale",
+  excerpt:
+    "Production-tested backend patterns for maintaining API reliability as traffic, team size, and business complexity increase.",
+  publishedAt: "2026-04-18",
+  author: "Salil Lakra",
+  readingTime: "12 min read",
+  tags: ["Backend", "API", "Reliability"],
+  coverImage:
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Network topology visualization representing API infrastructure",
+}
+
+## Reliability Is An Architectural Outcome
+
+API reliability is often discussed as an operations problem, but the root causes usually sit in architecture and code boundaries.
+
+Common failure patterns:
+
+1. Unbounded synchronous dependency chains.
+2. Inconsistent retry semantics across services.
+3. Ambiguous idempotency in write operations.
+4. Weak observability around business-critical flows.
+
+When these patterns accumulate, incidents become frequent and hard to diagnose.
+
+## Model Reliability By Failure Mode
+
+Treat each endpoint as a contract under stress, not only under ideal conditions.
+
+For each critical endpoint, define:
+
+1. Expected latency objective.
+2. Degraded behavior when dependencies fail.
+3. Retry and timeout behavior for upstream callers.
+4. Data consistency guarantees.
+
+This clarifies where you need strict correctness versus graceful degradation.
+
+![Server room with highlighted rack lights and monitoring alerts](https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1400&q=80)
+
+*Reliability improves when failure behavior is deliberately designed, not improvised during incidents.*
+
+## Idempotency As A First-Class Constraint
+
+At scale, duplicate requests are normal. Users retry. Mobile networks flap. Proxies replay. Your write APIs must remain safe under repetition.
+
+A practical rule set:
+
+1. Assign idempotency keys for externally triggered state changes.
+2. Persist request fingerprints with deterministic outcomes.
+3. Make response payloads consistent for identical successful operations.
+4. Emit explicit conflict semantics where duplication cannot be resolved.
+
+This reduces data corruption risk and simplifies client behavior.
+
+## Queue-Centric Workflows For Non-Interactive Work
+
+Many backend systems fail because every action is handled synchronously in user request paths.
+
+Prefer asynchronous orchestration when the user does not need immediate completion:
+
+1. Accept request and validate synchronously.
+2. Persist durable intent.
+3. Process via queue-backed workers with retries and dead-letter handling.
+4. Expose status endpoints or event webhooks.
+
+This decouples user experience from backend variability.
+
+## Versioning And Compatibility
+
+Breaking API clients is one of the fastest ways to lose trust internally and externally.
+
+Strong compatibility practice:
+
+1. Additive changes by default.
+2. Explicit deprecation windows.
+3. Contract tests against representative client versions.
+4. Release notes that state migration impact clearly.
+
+You do not need perfect backward compatibility forever. You need predictable evolution.
+
+![Engineer inspecting API traces and error-rate graphs](https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1400&q=80)
+
+*Compatibility discipline keeps product iteration fast across independent teams.*
+
+## Observability For Business Journeys
+
+Raw infrastructure metrics are necessary but incomplete. You also need telemetry aligned with business workflows.
+
+Track:
+
+1. Success rate by core user action.
+2. Latency percentiles by endpoint and dependency.
+3. Error cardinality with stable codes.
+4. Queue lag and retry depth for async jobs.
+
+During incidents, this allows teams to prioritize by user impact, not by loudest graph.
+
+## Closing
+
+Reliable APIs are not created by one tooling decision. They emerge from a series of engineering choices that anticipate failure, constrain blast radius, and preserve predictable behavior.
+
+If you design for failure early, reliability stops being a reactive cost and becomes a strategic capability.

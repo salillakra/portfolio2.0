@@ -1,0 +1,80 @@
+export const meta = {
+  title: "Database Migrations Without Downtime: A Full-Stack Guide",
+  excerpt:
+    "How to evolve production schemas safely while keeping APIs stable, deployments predictable, and user impact close to zero.",
+  publishedAt: "2026-04-06",
+  author: "Salil Lakra",
+  readingTime: "13 min read",
+  tags: ["Databases", "Migrations", "Full Stack"],
+  coverImage:
+    "https://images.unsplash.com/photo-1518186233392-c232efbf2373?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Engineer reviewing a migration plan on a laptop",
+}
+
+## The Real Cost Of Unsafe Migrations
+
+Schema migrations are one of the highest-risk activities in full-stack delivery. A single unsafe change can create partial outages, data inconsistency, or emergency rollbacks that destabilize release plans.
+
+The root issue is usually not tooling. It is migration strategy.
+
+## Expand And Contract, Not Big-Bang Changes
+
+The most reliable migration pattern remains expand-contract:
+
+1. Expand: introduce new schema elements in backward-compatible form.
+2. Dual-write or backfill as needed.
+3. Shift reads and writes to the new path.
+4. Contract: remove old schema only after verification window.
+
+This pattern acknowledges that application deploys and data transitions happen on different timelines.
+
+![Engineer validating migration plan on staging environment](https://images.unsplash.com/photo-1518186233392-c232efbf2373?auto=format&fit=crop&w=1400&q=80)
+
+*Decoupling schema change from behavior switch is the key reliability move.*
+
+## Application-Level Compatibility Matters
+
+Database safety is not only DDL safety. Your API and job workers must tolerate transition states.
+
+Checklist for compatibility:
+
+1. Reads handle both old and new columns.
+2. Writers avoid assuming immediate backfill completion.
+3. Validation logic supports transitional data shapes.
+4. Background jobs are version-aware during rollout windows.
+
+Without this, technically safe DDL can still produce runtime failures.
+
+## Backfill Strategy For Large Tables
+
+Large backfills fail when treated as one transaction or one-off script.
+
+Use controlled backfill mechanics:
+
+1. Chunk by stable key ranges.
+2. Rate-limit updates to protect primary workload latency.
+3. Persist progress checkpoints.
+4. Expose operational visibility for completion and error rate.
+
+This turns backfills into managed operations rather than risky events.
+
+## Rollback Planning Is Part Of Design
+
+Rollback becomes difficult if the forward path assumes irreversible writes.
+
+A robust plan includes:
+
+1. Forward and backward compatibility window.
+2. Rollback-safe write semantics.
+3. Snapshot or restore strategy aligned with RPO and RTO requirements.
+4. Explicit criteria for halt, proceed, and rollback decisions.
+
+Teams that rehearse this avoid panic-driven incident handling.
+
+![Operations console showing deployment timeline and rollback controls](https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=1400&q=80)
+
+*Migration confidence comes from rehearsed rollback logic, not optimism.*
+
+## Closing
+
+Safe migrations are a full-stack discipline. Database, backend, and frontend changes must be orchestrated as one delivery system. If you design for compatibility and observability from day one, migration work stops being a release blocker and becomes routine engineering practice.

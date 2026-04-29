@@ -1,0 +1,109 @@
+export const meta = {
+  title: "Monoliths vs Microservices: Choosing the Architecture That Actually Ships",
+  excerpt:
+    "A pragmatic framework for deciding between a modular monolith and microservices based on team size, change cadence, and operational maturity.",
+  publishedAt: "2026-04-30",
+  updatedAt: "2026-04-30",
+  featured: true,
+  author: "Salil Lakra",
+  readingTime: "12 min read",
+  tags: ["Architecture", "Monolith", "Microservices", "System Design"],
+  coverImage:
+    "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Engineers reviewing a system architecture board",
+}
+
+## The Decision That Shapes Everything
+
+Teams rarely choose an architecture for fun. They choose it because something hurts.
+Maybe releases are tangled, ownership is fuzzy, or the system feels fragile. The
+monolith vs microservices debate is really about two forces: speed today and
+control tomorrow.
+
+The truth is simple: **most teams should start with a modular monolith** and earn
+microservices only when the organization can operate them safely.
+
+## When A Monolith Is The Fastest Way To Win
+
+A monolith is a single deployable unit with shared runtime and data access.
+If it is modular, you still have clean boundaries, but you avoid the overhead of
+cross-service networking.
+
+A modular monolith is the right choice when:
+
+1. You have fewer than 20 engineers.
+2. Releases happen daily or weekly, not hourly.
+3. You are still discovering your real domain boundaries.
+4. Observability and platform tooling are still maturing.
+
+The benefit is clarity. One codebase, one deploy, one mental model. The cost is
+that you must enforce internal boundaries intentionally.
+
+## When Microservices Are Actually Worth It
+
+Microservices shine when **independence** is the highest priority. You accept more
+operational work to unlock parallel execution.
+
+Microservices start to make sense when:
+
+1. Teams are large and independent, often 30+ engineers.
+2. You have clear ownership boundaries and on-call rotation per service.
+3. You need different scaling profiles across domains.
+4. You already have strong deployment automation and observability.
+
+Without these conditions, microservices usually slow you down rather than speed
+you up.
+
+## The Hidden Tax Of Microservices
+
+A microservice architecture adds real costs:
+
+- Service discovery, routing, and network failure modes.
+- Coordinated schema changes across multiple services.
+- Authentication and authorization everywhere.
+- Distributed tracing and debugging complexity.
+
+If your team cannot reliably answer "what changed" and "who owns this" within
+minutes, microservices will amplify uncertainty.
+
+## The Modular Monolith Bridge
+
+The safest progression looks like this:
+
+1. Build a modular monolith with strict package boundaries.
+2. Use internal interfaces like you would use service contracts.
+3. Add observability at the domain boundary level.
+4. Split only the domains that demonstrably need independent release or scale.
+
+You are not choosing monolith *forever*. You are choosing **a lower risk default**
+until the organization is ready to pay the microservice tax.
+
+## Decision Framework
+
+Use this scorecard. If you answer "no" to more than two, do not split yet.
+
+- Can each domain be owned by a stable team?
+- Do you have a platform for CI/CD, secrets, and service discovery?
+- Are you prepared to observe and debug cross-service requests?
+- Do you already have stable, well-defined domain boundaries?
+- Is there a hard scaling or regulatory reason to split?
+
+## What About The Database?
+
+A shared database keeps a monolith simple and fast. As you move to microservices,
+consider a staged approach:
+
+1. Shared database with strict schema ownership by domain.
+2. Data access through internal APIs (even inside the monolith).
+3. Extract services with their own storage only when the contract is stable.
+
+The biggest mistake is splitting services while still sharing a fragile schema.
+
+## The Bottom Line
+
+Monoliths ship faster. Microservices scale organizations. The best teams choose a
+modular monolith, harden their boundaries, and split only when the cost of
+**not** splitting is higher than the cost of operating multiple services.
+
+If your current pain is coordination and ownership, fix the boundaries before you
+fix the architecture.

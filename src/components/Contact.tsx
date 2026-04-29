@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import { MagneticButton } from "./MagneticButton";
-import { Send, Github, Linkedin, Instagram, Twitter } from "lucide-react";
+import {
+  PaperPlaneTilt,
+  GithubLogo,
+  LinkedinLogo,
+  InstagramLogo,
+  XLogo,
+} from "@phosphor-icons/react";
 
 export function Contact() {
   return (
@@ -25,27 +31,27 @@ export function Contact() {
             href="mailto:salillakra.dev@gmail.com"
             variant="primary"
           >
-            <Send className="h-4 w-4" />
+            <PaperPlaneTilt className="h-4 w-4" />
             Send Message
           </MagneticButton>
 
           <MagneticButton href="https://github.com/salillakra">
-            <Github className="h-4 w-4" />
+            <GithubLogo className="h-4 w-4" />
             GitHub
           </MagneticButton>
 
           <MagneticButton href="https://linkedin.com/in/salillakra">
-            <Linkedin className="h-4 w-4" />
+            <LinkedinLogo className="h-4 w-4" />
             LinkedIn
           </MagneticButton>
 
           <MagneticButton href="https://instagram.com/officialsalillakra">
-            <Instagram className="h-4 w-4" />
+            <InstagramLogo className="h-4 w-4" />
             Instagram
           </MagneticButton>
 
           <MagneticButton href="https://x.com/salillakra223">
-            <Twitter className="h-4 w-4" />
+            <XLogo className="h-4 w-4" />
             Twitter
           </MagneticButton>
         </div>

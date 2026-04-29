@@ -1,0 +1,91 @@
+export const meta = {
+  title: "Frontend-Backend Contracts: How To Prevent Integration Drift",
+  excerpt:
+    "A senior-level guide to maintaining contract integrity between frontend and backend teams as products ship continuously.",
+  publishedAt: "2026-04-12",
+  author: "Salil Lakra",
+  readingTime: "11 min read",
+  tags: ["Full Stack", "Frontend", "API Contracts"],
+  coverImage:
+    "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Code on screen showing typed API definitions and client models",
+}
+
+## Drift Is Not A Team Problem, It Is A System Problem
+
+Integration drift happens when frontend assumptions and backend realities evolve at different speeds. Teams often interpret this as communication failure, but the deeper issue is missing technical guardrails.
+
+Typical symptoms:
+
+1. UI expects fields that are nullable in production.
+2. Backend ships enum values not represented in client logic.
+3. Error payloads vary by endpoint and break user messaging.
+4. Release confidence drops because QA carries integration risk.
+
+The solution is to treat contracts as executable artifacts.
+
+## Build Around Shared Schema Ownership
+
+A stable delivery model requires shared ownership at the contract layer.
+
+A practical structure:
+
+1. API schemas live in versioned source control.
+2. Breaking changes require explicit review and migration notes.
+3. Generated clients are consumed by frontend builds.
+4. CI validates that runtime responses conform to declared schemas.
+
+This turns drift from a late-stage surprise into an early-stage diff.
+
+![Developer pairing session reviewing API schema changes](https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80)
+
+*Shared schemas reduce ambiguity and make team boundaries healthier.*
+
+## Treat Error Contracts As Product Surface
+
+Most systems overdesign success payloads and underdesign error payloads. In production, errors are part of user experience and must be consistent.
+
+Use a predictable error model:
+
+1. Stable machine-readable error codes.
+2. Human-readable message strategy separated from internal diagnostics.
+3. Correlation IDs propagated end-to-end.
+4. Recoverability hints where applicable.
+
+This allows frontend flows to behave coherently across failure cases.
+
+## Consumer-Driven Contract Testing
+
+Provider-side tests are necessary but insufficient. Consumer-driven contract tests catch gaps from the caller perspective.
+
+Implementation approach:
+
+1. Frontend publishes expected interactions for critical flows.
+2. Backend validates those interactions in CI.
+3. Contract mismatches block merges before deployment.
+4. Version snapshots help identify when and why expectations changed.
+
+This shifts coordination from meetings to automation.
+
+## Release Strategy For Contract Changes
+
+Even with strong tooling, contract changes need rollout strategy.
+
+A dependable sequence:
+
+1. Add fields and behavior in backward-compatible mode.
+2. Release frontend that can handle both old and new semantics.
+3. Monitor adoption and error patterns.
+4. Remove old behavior after explicit deprecation window.
+
+This minimizes user-facing regression risk while preserving iteration speed.
+
+![Workflow board with staged rollout and integration checkpoints](https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80)
+
+*Progressive compatibility is often the fastest route to safe change.*
+
+## Closing
+
+Full-stack execution quality depends heavily on contract discipline. When contracts are explicit, tested, and versioned, teams can move independently without introducing systemic fragility.
+
+In mature engineering organizations, contract integrity is one of the clearest predictors of release confidence.
