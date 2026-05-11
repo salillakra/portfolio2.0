@@ -86,14 +86,14 @@ function BlogPostPage() {
             {" · "}
             {post.meta.readingTime}
           </p>
-        </header>
 
-        <img
-          src={post.meta.coverImage}
-          alt={post.meta.coverImageAlt}
-          className="mb-10 w-full rounded-2xl border border-(--border) object-cover"
-          loading="eager"
-        />
+          <img
+            src={post.meta.coverImage}
+            alt={post.meta.coverImageAlt}
+            className="mt-8 w-full rounded-2xl border border-(--border) object-cover"
+            loading="eager"
+          />
+        </header>
 
         <article className="blog-prose">
           <PostContent />

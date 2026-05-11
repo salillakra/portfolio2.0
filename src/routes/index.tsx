@@ -192,23 +192,31 @@ function App() {
                         damping: 24,
                         mass: 0.55,
                       }}
-                      className="featured-writing-card card group flex h-[430px] flex-col overflow-hidden rounded-3xl border border-(--border) bg-(--surface) sm:h-[470px] lg:h-[490px]"
+                      className="featured-writing-card card group flex min-h-[420px] flex-col overflow-hidden rounded-3xl border border-(--border) bg-(--surface)"
                     >
-                      <div className="relative h-44 overflow-hidden sm:h-48">
+                      <Link
+                        to="/blog/$slug"
+                        params={{ slug: post.slug }}
+                        className="block overflow-hidden no-underline"
+                        aria-label={post.title}
+                      >
                         <img
                           src={post.coverImage}
                           alt={post.coverImageAlt}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                          className="h-40 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-44"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-linear-to-t from-black/45 via-black/15 to-transparent" />
-                        <span className="absolute left-4 top-4 rounded-full border border-white/30 bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white">
-                          Featured
-                        </span>
-                      </div>
-
+                      </Link>
                       <div className="flex flex-1 flex-col p-5 sm:p-6">
-                        <div className="text-xs font-medium text-(--text-tertiary)">
+                        <div className="flex items-center justify-between gap-3">
+                          <span className="w-fit rounded-full border border-(--badge-border) bg-(--badge-bg) px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-(--text-secondary) uppercase">
+                            Featured
+                          </span>
+                          <span className="text-xs font-medium whitespace-nowrap text-(--text-tertiary)">
+                            {post.readingTime}
+                          </span>
+                        </div>
+                        <p className="mt-4 text-xs font-medium text-(--text-tertiary)">
                           {new Date(post.publishedAt).toLocaleDateString(
                             "en-US",
                             {
@@ -217,9 +225,7 @@ function App() {
                               year: "numeric",
                             },
                           )}
-                          {" · "}
-                          {post.readingTime}
-                        </div>
+                        </p>
                         <h3 className="mt-3 text-lg font-semibold tracking-tight text-(--text-primary) sm:text-xl">
                           <Link
                             to="/blog/$slug"

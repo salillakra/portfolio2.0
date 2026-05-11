@@ -224,13 +224,6 @@ div {
   margin: 0.45rem 0;
 }
 
-.blog-prose img {
-  width: 100%;
-  border-radius: 1rem;
-  border: 1px solid var(--border);
-  margin: 1.6rem 0 0.6rem;
-}
-
 .blog-prose blockquote {
   margin: 1.2rem 0;
   padding: 0.8rem 1rem;
@@ -255,4 +248,91 @@ div {
   border-radius: 0.4rem;
   padding: 0.15rem 0.35rem;
   color: var(--text-primary);
+}
+
+.blog-diagram {
+  margin: 1.8rem 0;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.2)),
+    var(--surface);
+  overflow: hidden;
+}
+
+.dark .blog-diagram {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+    var(--surface);
+}
+
+.blog-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 15rem;
+}
+
+.blog-diagram figcaption {
+  margin: 0;
+  padding: 0 1.2rem 1rem;
+  color: var(--text-tertiary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.blog-diagram-box,
+.blog-diagram-boundary {
+  stroke: var(--border-hover);
+  stroke-width: 2;
+  fill: var(--bg-secondary);
+}
+
+.blog-diagram-boundary {
+  stroke-dasharray: 9 7;
+  fill: transparent;
+}
+
+.blog-diagram-box-primary {
+  fill: var(--bg-secondary);
+}
+
+.blog-diagram-box-muted {
+  fill: var(--badge-bg);
+}
+
+.blog-diagram-box-accent {
+  fill: var(--metric-bg);
+  stroke: color-mix(in srgb, var(--metric-accent) 45%, var(--border-hover));
+}
+
+.blog-diagram-arrow,
+.blog-diagram-axis {
+  stroke: var(--text-tertiary);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.blog-diagram-arrowhead {
+  fill: var(--text-tertiary);
+}
+
+.blog-diagram-label,
+.blog-diagram-section-title {
+  fill: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.blog-diagram-detail,
+.blog-diagram-edge-label,
+.blog-diagram-axis-label {
+  fill: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.blog-diagram-section-title {
+  text-anchor: middle;
 }

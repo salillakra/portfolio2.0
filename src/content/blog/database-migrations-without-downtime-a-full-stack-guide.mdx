@@ -1,3 +1,5 @@
+import { BlogDiagram } from "../../components/BlogDiagram";
+
 export const meta = {
   title: "Database Migrations Without Downtime: A Full-Stack Guide",
   excerpt:
@@ -7,8 +9,8 @@ export const meta = {
   readingTime: "13 min read",
   tags: ["Databases", "Migrations", "Full Stack"],
   coverImage:
-    "https://images.unsplash.com/photo-1518186233392-c232efbf2373?auto=format&fit=crop&w=1600&q=80",
-  coverImageAlt: "Engineer reviewing a migration plan on a laptop",
+    "https://images.unsplash.com/photo-1775519520461-6b6e068d9250?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Server rack infrastructure representing production database systems",
 }
 
 ## The Real Cost Of Unsafe Migrations
@@ -16,6 +18,12 @@ export const meta = {
 Schema migrations are one of the highest-risk activities in full-stack delivery. A single unsafe change can create partial outages, data inconsistency, or emergency rollbacks that destabilize release plans.
 
 The root issue is usually not tooling. It is migration strategy.
+
+<BlogDiagram
+  variant="database-migration"
+  title="Expand-contract migration rollout timeline"
+  caption="Zero-downtime migrations work best as a staged rollout: expand safely, write both shapes, backfill in chunks, shift reads after verification, then contract."
+/>
 
 ## Expand And Contract, Not Big-Bang Changes
 
@@ -27,8 +35,6 @@ The most reliable migration pattern remains expand-contract:
 4. Contract: remove old schema only after verification window.
 
 This pattern acknowledges that application deploys and data transitions happen on different timelines.
-
-![Engineer validating migration plan on staging environment](https://images.unsplash.com/photo-1518186233392-c232efbf2373?auto=format&fit=crop&w=1400&q=80)
 
 *Decoupling schema change from behavior switch is the key reliability move.*
 
@@ -70,8 +76,6 @@ A robust plan includes:
 4. Explicit criteria for halt, proceed, and rollback decisions.
 
 Teams that rehearse this avoid panic-driven incident handling.
-
-![Operations console showing deployment timeline and rollback controls](https://images.unsplash.com/photo-1520869562399-e772f042f422?auto=format&fit=crop&w=1400&q=80)
 
 *Migration confidence comes from rehearsed rollback logic, not optimism.*
 

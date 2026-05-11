@@ -1,3 +1,5 @@
+import { BlogDiagram } from "../../components/BlogDiagram";
+
 export const meta = {
   title: "Full-Stack Observability: From User Action To Database Query",
   excerpt:
@@ -7,8 +9,8 @@ export const meta = {
   readingTime: "12 min read",
   tags: ["Observability", "Full Stack", "Performance"],
   coverImage:
-    "https://images.unsplash.com/photo-1551281044-8b5bdc1b5f97?auto=format&fit=crop&w=1600&q=80",
-  coverImageAlt: "Observability dashboard with traces, logs, and latency charts",
+    "https://images.unsplash.com/photo-1763568258367-1c52beb60be7?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Laptop screen showing code, profiling data, and performance charts",
 }
 
 ## Why Teams Struggle To Debug Cross-Layer Issues
@@ -16,6 +18,12 @@ export const meta = {
 A user reports that checkout is slow. Frontend metrics show elevated interaction delay. Backend dashboards show stable CPU. Database monitoring shows occasional lock contention. Nobody is wrong, but nobody has the full path.
 
 This is the classic observability gap: each layer has data, but there is no shared execution narrative.
+
+<BlogDiagram
+  variant="observability"
+  title="Correlated trace from user action to database query"
+  caption="A useful observability model carries the same trace context through browser interaction, API execution, async work, database calls, and final business outcome."
+/>
 
 ## Use Trace Context As A Product Primitive
 
@@ -29,8 +37,6 @@ Implementation baseline:
 4. Retain enough context to reconstruct a full request storyline.
 
 This reduces mean-time-to-diagnose more than almost any other platform investment.
-
-![Developer analyzing distributed trace waterfall and service timings](https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1400&q=80)
 
 *You cannot optimize what you cannot narrate end-to-end.*
 
@@ -72,8 +78,6 @@ Effective alert design:
 4. Measure alert quality by false-positive rate and time-to-resolution.
 
 This keeps on-call sustainable and effective.
-
-![On-call engineer triaging alerts with runbook and service map](https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80)
 
 *Observability maturity is visible in how calmly teams handle production variance.*
 

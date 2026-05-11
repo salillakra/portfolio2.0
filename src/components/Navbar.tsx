@@ -95,7 +95,7 @@ export function Navbar() {
           href="/"
           whileHover={{ y: -1, scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="relative z-10 rounded-full bg-(--accent) px-3.5 py-2 text-sm font-semibold tracking-[0.18em] text-(--accent-text) no-underline uppercase"
+          className="relative z-10 rounded-full bg-(--accent) px-2 py-2 text-sm font-semibold tracking-[0.18em] text-(--accent-text) no-underline uppercase"
         >
           SL
         </motion.a>

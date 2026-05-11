@@ -1,3 +1,5 @@
+import { BlogDiagram } from "../../components/BlogDiagram";
+
 export const meta = {
   title: "Frontend-Backend Contracts: How To Prevent Integration Drift",
   excerpt:
@@ -7,8 +9,8 @@ export const meta = {
   readingTime: "11 min read",
   tags: ["Full Stack", "Frontend", "API Contracts"],
   coverImage:
-    "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1600&q=80",
-  coverImageAlt: "Code on screen showing typed API definitions and client models",
+    "https://images.unsplash.com/photo-1743090661053-3d1feb2beab7?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Typed source code on a screen representing API contract definitions",
 }
 
 ## Drift Is Not A Team Problem, It Is A System Problem
@@ -24,6 +26,12 @@ Typical symptoms:
 
 The solution is to treat contracts as executable artifacts.
 
+<BlogDiagram
+  variant="contract-drift"
+  title="Shared schema workflow for preventing integration drift"
+  caption="Contract drift is reduced when frontend expectations, backend responses, and CI checks all converge on the same executable schema artifact."
+/>
+
 ## Build Around Shared Schema Ownership
 
 A stable delivery model requires shared ownership at the contract layer.
@@ -36,8 +44,6 @@ A practical structure:
 4. CI validates that runtime responses conform to declared schemas.
 
 This turns drift from a late-stage surprise into an early-stage diff.
-
-![Developer pairing session reviewing API schema changes](https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80)
 
 *Shared schemas reduce ambiguity and make team boundaries healthier.*
 
@@ -79,8 +85,6 @@ A dependable sequence:
 4. Remove old behavior after explicit deprecation window.
 
 This minimizes user-facing regression risk while preserving iteration speed.
-
-![Workflow board with staged rollout and integration checkpoints](https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80)
 
 *Progressive compatibility is often the fastest route to safe change.*
 

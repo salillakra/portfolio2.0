@@ -1,3 +1,5 @@
+import { BlogDiagram } from "../../components/BlogDiagram";
+
 export const meta = {
   title: "Full-Stack Systems Design For Product Velocity",
   excerpt:
@@ -9,8 +11,8 @@ export const meta = {
   readingTime: "14 min read",
   tags: ["Full Stack", "System Design", "Architecture"],
   coverImage:
-    "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
-  coverImageAlt: "Architecture blueprint with service boundaries on notes",
+    "https://images.unsplash.com/photo-1753715613388-7e03410b1dce?auto=format&fit=crop&w=1600&q=80",
+  coverImageAlt: "Product architecture sketches being drawn on a tablet",
 }
 
 ## Why Product Teams Slow Down As Codebases Grow
@@ -26,8 +28,6 @@ As the product grows, velocity usually drops for predictable reasons:
 
 None of this is unusual. It is simply the point where your architecture has to start carrying execution weight.
 
-![Architecture blueprint with microservices and domain boundaries on sticky notes](https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80)
-
 *Good architecture is less about elegance and more about preserving decision speed under complexity.*
 
 ## The Principle: Optimize For Independent Delivery
@@ -42,6 +42,12 @@ In practical terms:
 4. Infrastructure defaults are standardized, so every new feature does not require bespoke platform work.
 
 You are not trying to eliminate dependency. You are trying to **bound and make it predictable**.
+
+<BlogDiagram
+  variant="systems-design"
+  title="Full-stack system path for preserving product velocity"
+  caption="A product feature stays easier to ship when route intent, API contracts, domain logic, async work, data ownership, and operational guardrails remain visible as one delivery path."
+/>
 
 ## A Durable Request Path
 
@@ -68,8 +74,6 @@ Recommended baseline:
 4. Deprecation policy with dates, not vague intent.
 
 This removes a major source of release anxiety and helps teams coordinate without daily synchronization calls.
-
-![Developer reviewing API schema and monitoring dashboards](https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80)
 
 *Contract rigor is a velocity feature, not a governance burden.*
 
