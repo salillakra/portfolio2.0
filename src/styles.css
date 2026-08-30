@@ -78,6 +78,19 @@ html {
   scroll-behavior: smooth;
 }
 
+.route-pending-bar {
+  animation: route-pending 0.9s ease-in-out infinite;
+}
+
+@keyframes route-pending {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
 .font-display {
   font-family: var(--font-display);
 }

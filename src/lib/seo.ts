@@ -3,13 +3,13 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Salil Lakra";
-export const SITE_TITLE = "Salil Lakra — Full Stack Developer";
+export const SITE_TITLE = "Salil Lakra — Software Engineer";
 export const SITE_DESCRIPTION =
-  "Salil Lakra is a full stack developer building production web and mobile systems with React, TanStack, Next.js, and Node.js — including Quill, Agile Turn, and live campus events.";
+  "Salil Lakra is a software engineer focused on distributed backend systems, AI-powered applications, and scalable full-stack platforms — Go, TypeScript, Node.js, PostgreSQL, Redis, React, and Docker.";
 
 export const PERSON = {
   name: "Salil Lakra",
-  jobTitle: "Full Stack Developer",
+  jobTitle: "Software Engineer",
   email: "salillakra.dev@gmail.com",
   url: SITE_URL,
   image: "/logo.png",
@@ -22,10 +22,10 @@ export const PERSON = {
 } as const;
 
 export const OG_IMAGE = "/og.png";
-export const OG_IMAGE_ALT = "Salil Lakra — Full Stack Developer";
+export const OG_IMAGE_ALT = "Salil Lakra — Software Engineer";
 
 export const SITE_KEYWORDS =
-  "Salil Lakra, Salil Lakra developer, Salil Lakra portfolio, Full Stack Developer, React, React Native, Node.js, Next.js, TypeScript, TanStack Start, Quill, Agile Turn, E-Summit, BIT Mesra";
+  "Salil Lakra, Software Engineer, Full Stack Developer, Go, TypeScript, Node.js, React, Next.js, PostgreSQL, Redis, RAG, Quill, Forge, Agile Turn, E-Summit, BIT Mesra";
 
 export const absoluteUrl = (path: string) => {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;

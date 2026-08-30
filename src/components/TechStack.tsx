@@ -3,58 +3,76 @@ import { motion } from "framer-motion";
 const stack = [
   {
     category: "Languages",
-    items: ["JavaScript", "TypeScript", "Python", "C / C++", "SQL"],
+    items: [
+      "TypeScript",
+      "JavaScript",
+      "Go",
+      "Python",
+      "SQL",
+      "Java",
+      "C",
+      "C++",
+    ],
   },
   {
     category: "Frontend",
     items: [
       "React",
-      "SvelteKit",
       "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "GSAP",
       "React Native",
+      "Tailwind CSS",
+      "Zustand",
+      "TanStack Query",
+      "React Flow",
     ],
   },
   {
     category: "Backend",
     items: [
       "Node.js",
-      "Express",
-      "Supabase",
-      "REST APIs",
-      "WebSockets",
-      "Auth Systems",
-      "Nestjs",
-      "Django",
+      "Express.js",
+      "Hono",
       "FastAPI",
+      "REST",
       "GraphQL",
-      "RabbitMQ",
-      "Redis",
+      "JWT",
+      "OAuth",
+      "RBAC",
+      "WebSockets",
+      "SSE",
     ],
   },
   {
-    category: "Databases",
-    items: ["PostgreSQL", "MongoDB", "MySQL", "Firebase"],
-  },
-  {
-    category: "DevOps",
+    category: "AI / Search",
     items: [
-      "GitHub Actions",
-      "Docker",
-      "Kubernetes",
-      "Docker Compose",
-      "Nginx",
+      "RAG",
+      "Gemini",
+      "Pinecone",
+      "pgvector",
+      "Embeddings",
+      "Semantic search",
+      "OCR",
+      "Reranking",
     ],
   },
   {
-    category: "Analytics & Monitoring",
-    items: ["Sentry", "Datadog", "PostHog", "Google Analytics"],
-  },
-  {
-    category: "Tools",
-    items: ["Git", "Linux", "Supabase", "Firebase"],
+    category: "Data / Infra",
+    items: [
+      "PostgreSQL",
+      "MongoDB",
+      "MySQL",
+      "Redis",
+      "BullMQ",
+      "RabbitMQ",
+      "NATS JetStream",
+      "Docker",
+      "GitHub Actions",
+      "Linux",
+      "Nginx",
+      "Vercel",
+      "Cloudflare R2",
+      "Supabase",
+    ],
   },
 ];
 
@@ -101,7 +119,6 @@ export function TechStack() {
         ))}
       </div>
 
-      {/* Divider */}
       <div className="mt-16 h-px bg-(--border)" />
     </section>
   );

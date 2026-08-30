@@ -12,22 +12,22 @@ const services = [
     icon: Globe,
     title: "Full-Stack Web Apps",
     description:
-      "End-to-end web applications with Next.js, React, and Node.js — auth, payments, dashboards, real-time features.",
-    tags: ["Next.js", "React", "TypeScript", "Tailwind"],
+      "End-to-end web applications with Next.js, React, and Node.js — auth, dashboards, and real-time features.",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
   },
   {
     icon: DeviceMobile,
     title: "Mobile Development",
     description:
-      "Cross-platform mobile apps with React Native — shared codebase, native performance, push notifications.",
-    tags: ["React Native", "Expo", "iOS", "Android"],
+      "Cross-platform mobile apps with React Native for customer and field-agent workflows.",
+    tags: ["React Native", "TypeScript"],
   },
   {
     icon: Stack,
     title: "APIs & Backend Systems",
     description:
-      "RESTful APIs, WebSocket servers, authentication systems, and microservices that handle real traffic at scale.",
-    tags: ["Node.js", "Express", "WebSockets", "Auth"],
+      "REST and GraphQL APIs, WebSockets, SSE, JWT, OAuth, and RBAC.",
+    tags: ["Node.js", "Express.js", "Hono", "FastAPI"],
   },
   {
     icon: Database,

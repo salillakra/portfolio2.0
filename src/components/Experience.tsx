@@ -4,13 +4,13 @@ import { Briefcase } from "@phosphor-icons/react";
 const jobs = [
   {
     title: "Full Stack Developer",
-    company: "Betiyan Nidhi Pvt. Ltd.",
-    period: "2024 — Present",
+    company: "Betiyan Nidhi Pvt. Ltd. — Ranchi",
+    period: "Feb 2025 — May 2026",
     highlights: [
-      "Built Android apps using React Native",
-      "Designed scalable Node.js backend architecture",
-      "Optimized database queries and API performance",
-      "Structured databases for financial workflows",
+      "Built cross-platform React Native applications supporting customer and field-agent operational workflows.",
+      "Designed Node.js/Express backend services with MongoDB for secure financial and transactional workflows.",
+      "Improved API performance through query optimization, indexing, and backend architecture improvements.",
+      "Implemented JWT authentication, RBAC, and normalized data models for secure application access.",
     ],
   },
 ];

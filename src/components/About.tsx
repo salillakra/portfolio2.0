@@ -16,29 +16,29 @@ export function About() {
             About
           </p>
           <h2 className="font-display text-3xl tracking-tight text-(--text-primary) italic sm:text-4xl">
-            A full stack developer who ships real systems.
+            Software engineer. Distributed systems and AI apps.
           </h2>
 
           <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-(--text-secondary)">
             <p>
-              I'm Salil Lakra from India, currently studying Electronics and
-              Communication Engineering at{" "}
+              I'm Salil Lakra. B.Tech, Electronics and Communication
+              Engineering at{" "}
               <strong className="font-medium text-(--text-primary)">
-                BIT Mesra
-              </strong>
-              .
+                Birla Institute of Technology, Mesra
+              </strong>{" "}
+               — Aug 2024 – May 2028.
             </p>
             <p>
-              I build scalable web and mobile applications using modern
-              technologies — Next.js, Node.js, React Native, and TypeScript.
+              I work on distributed backend systems, AI-powered applications,
+              and scalable full-stack platforms — Go, TypeScript, Node.js,
+              PostgreSQL, Redis, React, Docker, event-driven architecture,
+              workflow orchestration, RAG, vector search, and asynchronous
+              processing.
             </p>
             <p>
-              My core focus areas are{" "}
-              <strong className="font-medium text-(--text-primary)">
-                backend architecture, performance optimization, scalable APIs, and
-                real-time systems
-              </strong>
-              .
+              3rd Prize, Internal Hackathon — Smart India Hackathon 2025, BIT
+              Mesra. Hardware-based Smart Agriculture for hilly-region
+              cultivation.
             </p>
           </div>
         </div>

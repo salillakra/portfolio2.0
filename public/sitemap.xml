@@ -17,6 +17,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://salillakra.com/projects/forge</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://salillakra.com/projects/quill</loc>
     <priority>0.85</priority>
   </url>

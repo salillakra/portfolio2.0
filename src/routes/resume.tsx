@@ -4,7 +4,7 @@ import { OG_IMAGE, OG_IMAGE_ALT, absoluteUrl, pageTitle } from "../lib/seo";
 
 const RESUME_URL = "/resume.pdf";
 const RESUME_DESCRIPTION =
-  "Resume of Salil Lakra — Full Stack Developer. Download or view in the browser.";
+  "Resume of Salil Lakra — Software Engineer. Download or view in the browser.";
 
 export const Route = createFileRoute("/resume")({
   head: () => {

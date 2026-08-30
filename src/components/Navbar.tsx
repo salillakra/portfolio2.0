@@ -112,7 +112,7 @@ export function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -24 }}
+      initial={false}
       animate={{ y: hidden ? -80 : 0 }}
       transition={{ type: "spring", stiffness: 220, damping: 28, mass: 0.6 }}
       className="fixed top-3 right-3 left-3 z-40"

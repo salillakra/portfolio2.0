@@ -25,6 +25,37 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "forge",
+    title: "Forge",
+    tagline: "Distributed workflow orchestration platform.",
+    description:
+      "A distributed workflow engine supporting DAG execution, cron scheduling, retries, asynchronous tasks, and durable workflow state.",
+    role: "Full-stack",
+    featured: true,
+    tech: ["Go", "Next.js", "PostgreSQL", "NATS JetStream", "Docker"],
+    github: "https://github.com/salillakra/forge-workflow",
+    cover: "/projects/forge/cover.png",
+    gallery: ["/projects/forge/01.png", "/projects/forge/02.png"],
+    highlights: [
+      "DAG execution, cron scheduling, retries, asynchronous tasks, and durable workflow state",
+      "Event-driven execution with Go, NATS JetStream, and PostgreSQL",
+      "React Flow workflow building and SSE-based execution monitoring",
+    ],
+    problem:
+      "Long-running work needs DAG execution, scheduling, retries, and durable state — not a fire-and-forget job queue.",
+    built:
+      "A distributed workflow engine with cron scheduling, retries, asynchronous tasks, durable state, React Flow editing, and SSE execution monitoring.",
+    architecture:
+      "Go and NATS JetStream for event-driven execution, PostgreSQL for durable workflow state, Next.js and React Flow on the builder, Docker to run it.",
+    roleDetail:
+      "Built the workflow engine, event-driven execution path, and the React Flow + SSE monitoring UI.",
+    seo: {
+      title: "Forge",
+      description:
+        "Forge by Salil Lakra — a distributed workflow orchestration platform in Go, Next.js, PostgreSQL, and NATS JetStream.",
+    },
+  },
+  {
     slug: "quill",
     title: "Quill",
     tagline: "Campus operations and assessment on a shared document engine.",
@@ -40,6 +71,7 @@ export const projects: Project[] = [
       "Prisma",
       "PostgreSQL",
       "BullMQ",
+      "Redis",
       "Pinecone",
       "Gemini",
       "Socket.IO",
@@ -94,6 +126,7 @@ export const projects: Project[] = [
       "Brevo",
     ],
     metric: "28 jobs · 17 candidates",
+    github: "https://github.com/salillakra/Agile_Turn_Technology_LLP",
     cover: "/projects/agile-turn/cover.png",
     gallery: [
       "/projects/agile-turn/01.png",
@@ -227,5 +260,5 @@ export const getProjectBySlug = (slug: string) =>
 export const HOME_METRICS = [
   { value: "11,000+", label: "E-Summit page views" },
   { value: "311", label: "RoboSaga users" },
-  { value: "4", label: "Production systems" },
+  { value: "5", label: "Production systems" },
 ] as const;

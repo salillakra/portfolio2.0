@@ -1,6 +1,7 @@
 import { HeadContent, Link, Scripts, createRootRoute } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { BootScreen, RoutePending } from "../components/BootScreen";
 import {
   OG_IMAGE,
   OG_IMAGE_ALT,
@@ -13,7 +14,11 @@ import {
 
 const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.classList.remove('dark')}else{document.documentElement.classList.add('dark')}}catch(e){document.documentElement.classList.add('dark')}})();`;
 
+const BOOT_CSS = `#boot-screen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;align-content:center;background:#0a0a0a;color:#fafafa;transition:opacity .28s ease,visibility .28s ease}html:not(.dark) #boot-screen{background:#fafafa;color:#0a0a0a}#boot-screen[data-exit="true"]{opacity:0;visibility:hidden;pointer-events:none}.boot-mark{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:2.75rem;letter-spacing:-.03em;line-height:1}.boot-spin{width:18px;height:18px;margin-top:18px;border:1.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:boot-spin .65s linear infinite}@keyframes boot-spin{to{transform:rotate(360deg)}}html.boot-locked,html.boot-locked body{overflow:hidden}`;
+
 export const Route = createRootRoute({
+  pendingComponent: RoutePending,
+  pendingMs: 120,
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -69,12 +74,17 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="dark boot-locked" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <style dangerouslySetInnerHTML={{ __html: BOOT_CSS }} />
+        <noscript>
+          <style>{`#boot-screen{display:none!important}html.boot-locked,html.boot-locked body{overflow:auto}`}</style>
+        </noscript>
         <HeadContent />
       </head>
       <body className="font-sans antialiased">
+        <BootScreen />
         {children}
         <Scripts />
       </body>

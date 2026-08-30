@@ -43,8 +43,71 @@ export function PixelPortrait({ src, alt }: PixelPortraitProps) {
     const canvas = canvasRef.current;
     if (!wrap || !canvas) return;
 
+    let started = false;
+    let stop: (() => void) | undefined;
+
+    const start = () => {
+      if (started) return;
+      started = true;
+      stop = runPixelEngine(wrap, canvas, src, setReady);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          start();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(wrap);
+
+    return () => {
+      observer.disconnect();
+      stop?.();
+    };
+  }, [reducedMotion, src]);
+
+  return (
+    <div className="card overflow-hidden rounded-2xl">
+      <div
+        ref={wrapRef}
+        className="relative aspect-9/16 w-full bg-[#0a0a0a]"
+      >
+        <img
+          src={src}
+          alt={alt}
+          width={576}
+          height={1024}
+          loading="lazy"
+          className={`h-full w-full object-cover transition-opacity duration-500 ${
+            ready && !reducedMotion ? "opacity-0" : "opacity-100"
+          }`}
+        />
+        {!reducedMotion ? (
+          <canvas
+            ref={canvasRef}
+            className={`absolute inset-0 h-full w-full touch-none ${
+              ready ? "opacity-100" : "opacity-0"
+            }`}
+            aria-hidden="true"
+          />
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+function runPixelEngine(
+  wrap: HTMLDivElement,
+  canvas: HTMLCanvasElement,
+  src: string,
+  setReady: (ready: boolean) => void,
+) {
+
     const ctx = canvas.getContext("2d", { alpha: false });
-    if (!ctx) return;
+    if (!ctx) return undefined;
 
     const pointer = { x: -9999, y: -9999, active: false };
     const particles: Particle[] = [];
@@ -195,48 +258,14 @@ export function PixelPortrait({ src, alt }: PixelPortraitProps) {
     canvas.addEventListener("pointerleave", onLeave);
     canvas.addEventListener("pointercancel", onLeave);
 
-    return () => {
-      disposed = true;
-      cancelAnimationFrame(raf);
-      observer.disconnect();
-      image.removeEventListener("load", onReady);
-      canvas.removeEventListener("pointermove", onMove);
-      canvas.removeEventListener("pointerdown", onDown);
-      canvas.removeEventListener("pointerleave", onLeave);
-      canvas.removeEventListener("pointercancel", onLeave);
-    };
-  }, [reducedMotion, src]);
-
-  return (
-    <figure className="card overflow-hidden rounded-2xl">
-      <div
-        ref={wrapRef}
-        className="relative aspect-9/16 w-full bg-[#0a0a0a]"
-      >
-        <img
-          src={src}
-          alt={alt}
-          width={576}
-          height={1024}
-          className={`h-full w-full object-cover transition-opacity duration-500 ${
-            ready && !reducedMotion ? "opacity-0" : "opacity-100"
-          }`}
-        />
-        {!reducedMotion ? (
-          <canvas
-            ref={canvasRef}
-            className={`absolute inset-0 h-full w-full cursor-crosshair touch-none ${
-              ready ? "opacity-100" : "opacity-0"
-            }`}
-            aria-hidden="true"
-          />
-        ) : null}
-      </div>
-      <figcaption className="border-t border-(--border) px-4 py-3 text-xs leading-5 text-(--text-tertiary)">
-        {reducedMotion
-          ? "Static portrait — motion is off in your system settings."
-          : "Move across the photo. Pixels scatter, then fall back into place. Click to burst."}
-      </figcaption>
-    </figure>
-  );
+  return () => {
+    disposed = true;
+    cancelAnimationFrame(raf);
+    observer.disconnect();
+    image.removeEventListener("load", onReady);
+    canvas.removeEventListener("pointermove", onMove);
+    canvas.removeEventListener("pointerdown", onDown);
+    canvas.removeEventListener("pointerleave", onLeave);
+    canvas.removeEventListener("pointercancel", onLeave);
+  };
 }

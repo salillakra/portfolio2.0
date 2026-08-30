@@ -31,9 +31,8 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-5xl text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-6 sm:mb-8"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-(--border) bg-(--surface) px-4 py-1.5 text-xs font-medium text-(--text-tertiary) backdrop-blur-sm">
@@ -43,28 +42,25 @@ export function Hero() {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="font-display text-5xl leading-[0.9] tracking-[-0.03em] text-(--text-primary) italic sm:text-8xl lg:text-[7.5rem]"
         >
           Salil Lakra
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-(--text-secondary) sm:mt-7 sm:text-lg"
         >
-          Full stack developer shipping production systems — AI campus software,
-          recruitment platforms, and live campus events.
+          Software engineer focused on distributed backend systems, AI-powered
+          applications, and scalable full-stack platforms.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
           className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10"
         >
           <MagneticButton href="#projects" variant="primary">
@@ -95,9 +91,8 @@ export function Hero() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
         className="relative z-10 mx-auto mt-16 w-full max-w-6xl sm:mt-20"
       >
         <p className="mb-4 text-center text-[11px] font-semibold tracking-[0.2em] text-(--text-tertiary) uppercase">
