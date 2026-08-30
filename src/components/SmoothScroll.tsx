@@ -1,5 +1,9 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function SmoothScroll() {
   useEffect(() => {
@@ -9,13 +13,15 @@ export function SmoothScroll() {
       touchMultiplier: 2,
     });
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    lenis.on("scroll", ScrollTrigger.update);
 
-    // Support anchor links with smooth scroll
+    const onTick = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(onTick);
+    gsap.ticker.lagSmoothing(0);
+
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const anchor = target.closest('a[href^="#"]');
@@ -32,7 +38,9 @@ export function SmoothScroll() {
 
     return () => {
       document.removeEventListener("click", handleClick);
+      gsap.ticker.remove(onTick);
       lenis.destroy();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 

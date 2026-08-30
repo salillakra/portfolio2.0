@@ -2,13 +2,14 @@ import { ThemeToggle } from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Stack", href: "#stack" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Stack", href: "/#stack" },
+  { label: "Work", href: "/projects" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 function NavPill({
@@ -24,17 +25,29 @@ function NavPill({
   onClick?: () => void;
   className?: string;
 }) {
+  const sharedClass = `rounded-full px-4 py-2 text-[13px] no-underline transition-colors ${
+    active
+      ? "font-semibold text-(--text-primary)"
+      : "font-medium text-(--text-tertiary)"
+  }  hover:text-(--text-primary) ${className}`;
+
+  if (href.startsWith("/") && !href.includes("#") && !href.includes(".")) {
+    return (
+      <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}>
+        <Link to={href} onClick={onClick} className={sharedClass}>
+          {children}
+        </Link>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.a
       href={href}
       onClick={onClick}
       whileHover={{ y: -1 }}
       whileTap={{ scale: 0.98 }}
-      className={`rounded-full px-4 py-2 text-[13px] no-underline transition-colors ${
-        active
-          ? "font-semibold text-(--text-primary)"
-          : "font-medium text-(--text-tertiary)"
-      }  hover:text-(--text-primary) ${className}`}
+      className={sharedClass}
     >
       {children}
     </motion.a>
@@ -47,6 +60,9 @@ export function Navbar() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const workActive = pathname.startsWith("/projects");
+  const blogActive = pathname.startsWith("/blog");
 
   useEffect(() => {
     lastScrollY.current = window.scrollY;
@@ -83,36 +99,49 @@ export function Navbar() {
     }
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <motion.nav
       initial={{ y: -24 }}
       animate={{ y: hidden ? -80 : 0 }}
       transition={{ type: "spring", stiffness: 220, damping: 28, mass: 0.6 }}
-      className="fixed top-3 left-3 right-3 z-40"
+      className="fixed top-3 right-3 left-3 z-40"
     >
       <div className="relative mx-auto flex max-w-6xl items-center justify-between overflow-hidden rounded-full border border-(--border) bg-(--nav-bg) px-4 py-3 shadow-[0_16px_50px_rgba(0,0,0,0.12)] backdrop-blur-2xl sm:px-5">
-        <motion.a
-          href="/"
+        <motion.div
           whileHover={{ y: -1, scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="relative z-10 rounded-full bg-(--accent) px-2 py-2 text-sm font-semibold tracking-[0.18em] text-(--accent-text) no-underline uppercase"
         >
-          SL
-        </motion.a>
+          <Link
+            to="/"
+            className="relative z-10 rounded-full bg-(--accent) px-2 py-2 text-sm font-semibold tracking-[0.18em] text-(--accent-text) no-underline uppercase"
+          >
+            SL
+          </Link>
+        </motion.div>
 
-        {/* Desktop links */}
         <div
-          className="relative z-10 hidden md:flex items-center gap-1 rounded-full border border-(--border) bg-(--surface) p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.06)]"
+          className="relative z-10 hidden items-center gap-1 rounded-full border border-(--border) bg-(--surface) p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.06)] md:flex"
           onMouseLeave={() => setHoveredLink(null)}
         >
           <div
-            className="relative flex items-center justify-center h-full px-1"
+            className="relative flex h-full items-center justify-center px-1"
             onMouseEnter={() => setHoveredLink("/blog")}
           >
             <NavPill
               href="/blog"
-              active
-              className="text-(--text-primary) py-2.5 hover:text-(--text-secondary)"
+              active={blogActive}
+              className="py-2.5 text-(--text-primary) hover:text-(--text-secondary)"
             >
               Blog
             </NavPill>
@@ -137,12 +166,13 @@ export function Navbar() {
           {navLinks.map((link) => (
             <div
               key={link.label}
-              className="relative flex items-center justify-center h-full px-1"
+              className="relative flex h-full items-center justify-center px-1"
               onMouseEnter={() => setHoveredLink(link.label)}
             >
               <NavPill
                 href={link.href}
-                className="text-(--text-tertiary) hover:text-(--text-secondary) py-2.5"
+                active={link.href === "/projects" && workActive}
+                className="py-2.5 text-(--text-tertiary) hover:text-(--text-secondary)"
               >
                 {link.label}
               </NavPill>
@@ -169,34 +199,35 @@ export function Navbar() {
 
         <div className="relative z-10 flex items-center gap-3">
           <ThemeToggle />
-          {/* Mobile hamburger */}
           <motion.button
             onClick={() => setOpen(!open)}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-(--border) bg-(--surface) text-(--text-primary) cursor-pointer shadow-[0_6px_18px_rgba(0,0,0,0.08)]"
             aria-label="Toggle menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-(--border) bg-(--surface) text-(--text-primary) shadow-[0_6px_18px_rgba(0,0,0,0.08)] md:hidden"
           >
             {open ? <X className="h-4 w-4" /> : <List className="h-4 w-4" />}
           </motion.button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
             initial={{ height: 0, opacity: 0, y: -8 }}
             animate={{ height: "auto", opacity: 1, y: 0 }}
             exit={{ height: 0, opacity: 0, y: -8 }}
             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] as const }}
-            className="md:hidden mx-auto mt-2 overflow-hidden rounded-3xl border border-(--border) bg-(--nav-bg) shadow-[0_16px_50px_rgba(0,0,0,0.12)] backdrop-blur-2xl"
+            className="mx-auto mt-2 overflow-hidden rounded-3xl border border-(--border) bg-(--nav-bg) shadow-[0_16px_50px_rgba(0,0,0,0.12)] backdrop-blur-2xl md:hidden"
           >
-            <div className="flex flex-col px-3 py-3 gap-1">
+            <div className="flex flex-col gap-1 px-3 py-3">
               <NavPill
                 href="/blog"
                 onClick={() => setOpen(false)}
-                active
+                active={blogActive}
                 className="rounded-2xl px-4 py-3 text-sm text-(--text-primary)"
               >
                 Blog
@@ -206,6 +237,7 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
+                  active={link.href === "/projects" && workActive}
                   className="rounded-2xl px-4 py-3 text-sm text-(--text-secondary) hover:text-(--text-primary)"
                 >
                   {link.label}

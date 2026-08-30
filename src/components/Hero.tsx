@@ -3,20 +3,24 @@ import {
   ArrowRight,
   GithubLogo,
   FileText,
+  LinkedinLogo,
   InstagramLogo,
 } from "@phosphor-icons/react";
+import { Link } from "@tanstack/react-router";
 import { MagneticButton } from "./MagneticButton";
+import { ProjectMedia } from "./ProjectMedia";
+import { getFeaturedProjects } from "../data/projects";
 
 export function Hero() {
+  const selected = getFeaturedProjects().slice(0, 3);
+
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-20 sm:pt-16 text-center overflow-hidden">
-      {/* Ambient gradient */}
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-28 pb-16 sm:pt-32">
       <div
         className="pointer-events-none absolute inset-0"
         style={{ background: "var(--gradient-hero)" }}
       />
 
-      {/* Subtle grid pattern */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.015]"
         style={{
@@ -25,7 +29,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-3xl">
+      <div className="relative z-10 mx-auto w-full max-w-5xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,7 +37,7 @@ export function Hero() {
           className="mb-6 sm:mb-8"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-(--border) bg-(--surface) px-4 py-1.5 text-xs font-medium text-(--text-tertiary) backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
             Available for opportunities
           </span>
         </motion.div>
@@ -42,7 +46,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="text-4xl font-bold tracking-[-0.02em] text-(--text-primary) sm:text-7xl lg:text-8xl"
+          className="font-display text-5xl leading-[0.9] tracking-[-0.03em] text-(--text-primary) italic sm:text-8xl lg:text-[7.5rem]"
         >
           Salil Lakra
         </motion.h1>
@@ -51,17 +55,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="mx-auto mt-4 sm:mt-6 max-w-xl text-sm leading-relaxed text-(--text-secondary) sm:text-lg"
+          className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-(--text-secondary) sm:mt-7 sm:text-lg"
         >
-          Full Stack Developer building high-performance web and mobile
-          applications with Next.js, React Native, and Node.js.
+          Full stack developer shipping production systems — AI campus software,
+          recruitment platforms, and live campus events.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
-          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3"
+          className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10"
         >
           <MagneticButton href="#projects" variant="primary">
             View Projects
@@ -73,20 +77,67 @@ export function Hero() {
             GitHub
           </MagneticButton>
 
+          <MagneticButton href="https://linkedin.com/in/salillakra">
+            <LinkedinLogo className="h-4 w-4" />
+            LinkedIn
+          </MagneticButton>
+
           <MagneticButton href="/resume">
             <FileText className="h-4 w-4" />
             Resume
           </MagneticButton>
 
-          <MagneticButton href="https://instagram.com/salillakra">
+          <MagneticButton href="https://instagram.com/officialsalillakra">
             <InstagramLogo className="h-4 w-4" />
             Instagram
           </MagneticButton>
         </motion.div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-(--bg) to-transparent" />
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+        className="relative z-10 mx-auto mt-16 w-full max-w-6xl sm:mt-20"
+      >
+        <p className="mb-4 text-center text-[11px] font-semibold tracking-[0.2em] text-(--text-tertiary) uppercase">
+          Selected work
+        </p>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+          {selected.map((project, index) => (
+            <motion.div
+              key={project.slug}
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 280, damping: 22 }}
+            >
+              <Link
+                to="/projects/$slug"
+                params={{ slug: project.slug }}
+                className="card group block overflow-hidden rounded-2xl no-underline"
+              >
+                <ProjectMedia
+                  src={project.cover}
+                  alt={`${project.title} — Salil Lakra`}
+                  title={project.title}
+                  className="aspect-16/10"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+                <div className="flex items-start justify-between gap-3 p-4">
+                  <div>
+                    <p className="font-display text-xl text-(--text-primary) italic">
+                      {project.title}
+                    </p>
+                    <p className="mt-1 line-clamp-2 text-xs leading-5 text-(--text-tertiary)">
+                      {project.tagline}
+                    </p>
+                  </div>
+                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-(--text-tertiary) transition-transform group-hover:translate-x-0.5" />
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }

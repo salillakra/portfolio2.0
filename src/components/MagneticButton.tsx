@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from '@tanstack/react-router'
 
 export function MagneticButton({
   children,
@@ -30,6 +31,8 @@ export function MagneticButton({
       ? 'bg-(--accent) text-(--accent-text) hover:opacity-90'
       : 'bg-(--surface) text-(--text-primary) border border-(--border) hover:border-(--border-hover) hover:bg-(--surface-hover)'
 
+  const isInternal =
+    href?.startsWith('/') && !href.startsWith('//') && !href.includes('.')
   const Tag = href ? 'a' : 'button'
 
   return (
@@ -41,14 +44,23 @@ export function MagneticButton({
       animate={{ x: position.x * 0.1, y: position.y * 0.1 }}
       transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
     >
-      <Tag
-        href={href || undefined}
-        className="relative z-10 flex items-center justify-center gap-2 no-underline text-inherit w-full h-full"
-        target={href?.startsWith('http') ? '_blank' : undefined}
-        rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-      >
-        {children}
-      </Tag>
+      {isInternal && href ? (
+        <Link
+          to={href}
+          className="relative z-10 flex items-center justify-center gap-2 no-underline text-inherit w-full h-full"
+        >
+          {children}
+        </Link>
+      ) : (
+        <Tag
+          href={href || undefined}
+          className="relative z-10 flex items-center justify-center gap-2 no-underline text-inherit w-full h-full"
+          target={href?.startsWith('http') ? '_blank' : undefined}
+          rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+        >
+          {children}
+        </Tag>
+      )}
     </motion.div>
   )
 }

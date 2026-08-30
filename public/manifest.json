@@ -1,6 +1,12 @@
 {
-  "short_name": "TanStack App",
-  "name": "Create TanStack App Sample",
+  "name": "Salil Lakra — Full Stack Developer",
+  "short_name": "Salil Lakra",
+  "description": "Portfolio of Salil Lakra — Full Stack Developer. Production systems including Quill, Agile Turn, and live campus events.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0a",
   "icons": [
     {
       "src": "favicon.ico",
@@ -17,9 +23,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }

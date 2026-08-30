@@ -2,12 +2,39 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, MagnifyingGlass } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import { getAllBlogPostMeta, getFeaturedBlogPostMeta } from "../../lib/blog";
+import {
+  OG_IMAGE,
+  OG_IMAGE_ALT,
+  absoluteUrl,
+  pageTitle,
+} from "../../lib/seo";
+
+const BLOG_DESCRIPTION =
+  "Writing by Salil Lakra on full-stack delivery, production architecture, and engineering practice.";
 
 export const Route = createFileRoute("/blog/")({
   loader: () => ({
     posts: getAllBlogPostMeta(),
     featuredPost: getFeaturedBlogPostMeta(),
   }),
+  head: () => {
+    const canonical = absoluteUrl("/blog");
+    return {
+      meta: [
+        { title: pageTitle("Blog") },
+        { name: "description", content: BLOG_DESCRIPTION },
+        { property: "og:title", content: pageTitle("Blog") },
+        { property: "og:description", content: BLOG_DESCRIPTION },
+        { property: "og:url", content: canonical },
+        { property: "og:image", content: absoluteUrl(OG_IMAGE) },
+        { property: "og:image:alt", content: OG_IMAGE_ALT },
+        { name: "twitter:title", content: pageTitle("Blog") },
+        { name: "twitter:description", content: BLOG_DESCRIPTION },
+        { name: "twitter:image", content: absoluteUrl(OG_IMAGE) },
+      ],
+      links: [{ rel: "canonical", href: canonical }],
+    };
+  },
   component: BlogIndexPage,
 });
 

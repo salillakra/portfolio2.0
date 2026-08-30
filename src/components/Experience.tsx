@@ -27,7 +27,7 @@ export function Experience() {
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-(--text-tertiary)">
           Experience
         </p>
-        <h2 className="text-2xl font-semibold tracking-tight text-(--text-primary) sm:text-3xl">
+        <h2 className="font-display text-3xl tracking-tight text-(--text-primary) italic sm:text-4xl">
           Where I've worked.
         </h2>
       </motion.div>

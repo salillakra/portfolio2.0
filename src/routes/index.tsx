@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
 import { TechStack } from "../components/TechStack";
@@ -7,15 +6,42 @@ import { Projects } from "../components/Projects";
 import { Experience } from "../components/Experience";
 import { Services } from "../components/Approach";
 import { Contact } from "../components/Contact";
-import { CursorGlow } from "../components/CursorGlow";
-import { SmoothScroll } from "../components/SmoothScroll";
+import { SiteChrome } from "../components/SiteChrome";
+import { PageFade } from "../components/PageFade";
+import { JsonLd } from "../components/JsonLd";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, CaretRight } from "@phosphor-icons/react";
 import { getAllBlogPostMeta } from "../lib/blog";
 import { motion, type HTMLMotionProps } from "framer-motion";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import {
+  OG_IMAGE,
+  OG_IMAGE_ALT,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  absoluteUrl,
+  personJsonLd,
+  websiteJsonLd,
+} from "../lib/seo";
 
-export const Route = createFileRoute("/")({ component: App });
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESCRIPTION },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESCRIPTION },
+      { property: "og:url", content: absoluteUrl("/") },
+      { property: "og:image", content: absoluteUrl(OG_IMAGE) },
+      { property: "og:image:alt", content: OG_IMAGE_ALT },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+      { name: "twitter:image", content: absoluteUrl(OG_IMAGE) },
+    ],
+    links: [{ rel: "canonical", href: absoluteUrl("/") }],
+  }),
+  component: App,
+});
 
 type MagneticCardProps = HTMLMotionProps<"article"> & {
   children: ReactNode;
@@ -128,11 +154,10 @@ function App() {
   }, [featuredPosts.length]);
 
   return (
-    <>
-      <CursorGlow />
-      <SmoothScroll />
-      <Navbar />
-      <main>
+    <SiteChrome>
+      <PageFade>
+        <JsonLd data={[personJsonLd(), websiteJsonLd()]} />
+        <main>
         <Hero />
         {featuredPosts.length > 0 ? (
           <section
@@ -276,6 +301,7 @@ function App() {
         <Services />
         <Contact />
       </main>
-    </>
+      </PageFade>
+    </SiteChrome>
   );
 }

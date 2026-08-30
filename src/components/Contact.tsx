@@ -18,7 +18,7 @@ export function Contact() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="text-center"
       >
-        <h2 className="text-3xl font-bold tracking-tight text-(--text-primary) sm:text-4xl">
+        <h2 className="font-display text-4xl tracking-tight text-(--text-primary) italic sm:text-5xl">
           Let's build something.
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-(--text-secondary) text-[15px] leading-relaxed">
