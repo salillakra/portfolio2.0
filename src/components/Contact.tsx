@@ -6,6 +6,7 @@ import {
   LinkedinLogo,
   InstagramLogo,
   XLogo,
+  Coffee,
 } from "@phosphor-icons/react";
 
 export function Contact() {
@@ -53,6 +54,11 @@ export function Contact() {
           <MagneticButton href="https://x.com/salillakra223">
             <XLogo className="h-4 w-4" />
             Twitter
+          </MagneticButton>
+
+          <MagneticButton href="https://www.buymeacoffee.com/salillakra">
+            <Coffee className="h-4 w-4" />
+            Buy me a coffee
           </MagneticButton>
         </div>
       </motion.div>

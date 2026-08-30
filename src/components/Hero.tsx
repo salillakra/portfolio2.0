@@ -5,6 +5,7 @@ import {
   FileText,
   LinkedinLogo,
   InstagramLogo,
+  Coffee,
 } from "@phosphor-icons/react";
 import { Link } from "@tanstack/react-router";
 import { MagneticButton } from "./MagneticButton";
@@ -87,6 +88,11 @@ export function Hero() {
             <InstagramLogo className="h-4 w-4" />
             Instagram
           </MagneticButton>
+
+          <MagneticButton href="https://www.buymeacoffee.com/salillakra">
+            <Coffee className="h-4 w-4" />
+            Buy me a coffee
+          </MagneticButton>
         </motion.div>
       </div>
 
@@ -98,35 +104,36 @@ export function Hero() {
         <p className="mb-4 text-center text-[11px] font-semibold tracking-[0.2em] text-(--text-tertiary) uppercase">
           Selected work
         </p>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+        <div className="grid grid-cols-1 items-stretch gap-3 sm:grid-cols-3 sm:gap-4">
           {selected.map((project, index) => (
             <motion.div
               key={project.slug}
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 280, damping: 22 }}
+              className="min-w-0"
             >
               <Link
                 to="/projects/$slug"
                 params={{ slug: project.slug }}
-                className="card group block overflow-hidden rounded-2xl no-underline"
+                className="card group flex h-full flex-col overflow-hidden rounded-2xl no-underline"
               >
                 <ProjectMedia
                   src={project.cover}
                   alt={`${project.title} — Salil Lakra`}
                   title={project.title}
-                  className="aspect-16/10"
+                  className="aspect-16/10 w-full shrink-0"
                   loading={index === 0 ? "eager" : "lazy"}
                 />
-                <div className="flex items-start justify-between gap-3 p-4">
-                  <div>
-                    <p className="font-display text-xl text-(--text-primary) italic">
+                <div className="flex flex-1 flex-col p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="font-display line-clamp-2 min-h-14 flex-1 text-xl leading-7 text-(--text-primary) italic">
                       {project.title}
                     </p>
-                    <p className="mt-1 line-clamp-2 text-xs leading-5 text-(--text-tertiary)">
-                      {project.tagline}
-                    </p>
+                    <ArrowRight className="mt-1.5 h-4 w-4 shrink-0 text-(--text-tertiary) transition-transform group-hover:translate-x-0.5" />
                   </div>
-                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-(--text-tertiary) transition-transform group-hover:translate-x-0.5" />
+                  <p className="mt-1 line-clamp-2 min-h-10 text-xs leading-5 text-(--text-tertiary)">
+                    {project.tagline}
+                  </p>
                 </div>
               </Link>
             </motion.div>

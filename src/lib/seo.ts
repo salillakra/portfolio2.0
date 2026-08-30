@@ -18,6 +18,7 @@ export const PERSON = {
     "https://linkedin.com/in/salillakra",
     "https://x.com/salillakra223",
     "https://instagram.com/officialsalillakra",
+    "https://www.buymeacoffee.com/salillakra",
   ],
 } as const;
 

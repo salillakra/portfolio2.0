@@ -29,11 +29,11 @@ export function ProjectMedia({
           alt={alt}
           loading={loading}
           onError={() => setFailed(true)}
-          className={`h-full w-full object-cover ${imgClassName}`}
+          className={`absolute inset-0 h-full w-full object-cover object-top ${imgClassName}`}
         />
       ) : (
         <div
-          className="flex h-full min-h-full w-full items-end p-6 sm:p-8"
+          className="absolute inset-0 flex h-full w-full items-end p-6 sm:p-8"
           style={{
             background:
               "radial-gradient(ellipse 80% 70% at 20% 0%, color-mix(in srgb, var(--metric-accent) 22%, transparent), transparent 55%), linear-gradient(160deg, var(--bg-secondary), var(--bg-tertiary))",

@@ -124,9 +124,16 @@ export function Navbar() {
         >
           <Link
             to="/"
-            className="relative z-10 rounded-full bg-(--accent) px-2 py-2 text-sm font-semibold tracking-[0.18em] text-(--accent-text) no-underline uppercase"
+            className="relative z-10 flex h-9 w-9 overflow-hidden rounded-full border border-(--border) no-underline"
+            aria-label="Salil Lakra home"
           >
-            SL
+            <img
+              src="/logo192.png"
+              alt=""
+              width={36}
+              height={36}
+              className="h-full w-full object-cover"
+            />
           </Link>
         </motion.div>
 
